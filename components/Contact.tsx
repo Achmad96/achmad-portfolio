@@ -35,7 +35,7 @@ const Contact = () => {
         }}
       >
         <h1 className="text-3xl">Connect with me &#129303;</h1>
-        <label className="input input-bordered flex items-center gap-2">
+        <label className="input-bordered input flex items-center gap-2">
           <input
             type="text"
             name="username"
@@ -49,7 +49,7 @@ const Contact = () => {
           maxLength={200}
           ref={ref}
           name="messages"
-          className="textarea textarea-bordered resize-none overflow-hidden"
+          className="textarea-bordered textarea resize-none overflow-hidden"
           onInput={(e: FormEvent<HTMLTextAreaElement>) => {
             if (ref.current && e.currentTarget.scrollHeight <= 120) {
               ref.current.style.height = "auto";
