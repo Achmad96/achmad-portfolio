@@ -41,32 +41,6 @@
   a {
     scroll-behavior: smooth;
   }
-
-  nav a {
-    position: relative;
-    overflow: hidden;
-  }
-
-  nav a::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: rgb(13 148 136);
-    transition: width 0.3s ease-in-out;
-  }
-
-  nav a:hover::after {
-    width: 100%;
-  }
-}
-
-@layer utilities {
-  .select-link::after {
-    width: 100%;
-  }
 }
 
 @theme inline {

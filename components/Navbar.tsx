@@ -52,9 +52,16 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="rounded-md px-3 py-1.5 text-xs font-medium text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-950 dark:text-neutral-300 dark:hover:bg-neutral-900 dark:hover:text-white"
+                className="group relative rounded-lg px-3.5 py-1.5 text-xs font-medium text-neutral-600 transition-colors duration-200 hover:text-neutral-950 dark:text-neutral-300 dark:hover:text-white"
               >
-                {link.name}
+                {/* Soft backdrop pill on hover */}
+                <span className="absolute inset-0 rounded-lg bg-neutral-100/80 opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:bg-neutral-900/80" />
+
+                {/* Label */}
+                <span className="relative z-10">{link.name}</span>
+
+                {/* Smooth centered accent line */}
+                <span className="absolute bottom-1 inset-x-3.5 h-[2px] origin-center scale-x-0 rounded-full bg-teal-500 transition-transform duration-300 ease-out group-hover:scale-x-100 dark:bg-teal-400" />
               </a>
             ))}
           </nav>
