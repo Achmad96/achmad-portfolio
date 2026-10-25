@@ -19,7 +19,7 @@ export default function Footer() {
               AR.
             </Link>
             <p className="text-xs text-neutral-500">
-              Software Engineer &bull; Information Systems
+              Aspiring Machine Learning Engineer &bull; Information Systems
             </p>
           </div>
 

@@ -17,7 +17,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-xl leading-relaxed">
-              A passionate developer and Information Systems student based in Surabaya. Experienced in building AI-powered computer vision systems, deep learning anomaly detection models, and full-stack digital platforms.
+              An aspiring <strong className="font-semibold text-neutral-900 dark:text-white">Machine Learning Engineer</strong> and Information Systems student based in Surabaya, Indonesia. Passionate about designing deep learning architectures, real-time computer vision pipelines, and intelligent data systems.
             </p>
 
             {/* Pill-shaped Buttons & Social Links matching reference */}
@@ -26,7 +26,7 @@ export default function Hero() {
                 href="#projects"
                 className="inline-flex items-center gap-2 rounded-full bg-neutral-950 text-white hover:bg-neutral-800 dark:bg-white dark:text-neutral-950 dark:hover:bg-neutral-200 px-6 py-3 text-sm font-semibold transition-colors shadow-sm"
               >
-                <span>View Projects</span>
+                <span>Explore ML Projects</span>
                 <ArrowRight className="h-4 w-4" />
               </a>
 

@@ -13,33 +13,50 @@ export type ProjectType = {
   url?: string;
   githubUrl?: string;
   featured: boolean;
+  isML?: boolean;
 };
 
 export const PROJECTS_METADATA: ProjectType[] = [
   {
     id: "synthetic-fraud-detection",
-    title: "Synthetic Transaction & Fraud Anomaly Detection",
+    title: "Synthetic Financial Transaction Generation & Fraud Anomaly Detection",
     company: "PT Jasa Web Indonesia (Webtocrat)",
     description:
-      "A deep learning architecture and synthetic transaction generator built using Nvidia NeMo Data Designer to detect financial anomalies, achieving 98% accuracy on the inference dataset via supervised learning techniques.",
-    highlight: "Nvidia NeMo data synthesis & 98% accuracy deep learning anomaly classifier.",
-    tech: ["Python", "Nvidia NeMo", "PyTorch", "Scikit-Learn", "Computer Vision"],
+      "An end-to-end deep learning pipeline for financial fraud detection addressing severe class imbalance. Leveraged Nvidia NeMo Data Designer to synthesize realistic tabular transaction distributions, and trained deep neural anomaly detection classifiers achieving 98% accuracy on held-out inference datasets through supervised learning, custom loss optimization, and feature importance analysis.",
+    highlight: "Nvidia NeMo synthetic tabular data generation & 98% accuracy deep learning anomaly classifier.",
+    tech: ["Python", "PyTorch", "Nvidia NeMo", "Scikit-Learn", "Deep Learning", "Anomaly Detection"],
     category: "ai",
-    categoryLabel: "AI & Machine Learning",
+    categoryLabel: "Machine Learning & Deep Learning",
     githubUrl: "https://github.com/Achmad96/synthetic-fraud-detection-dataset",
     featured: true,
+    isML: true,
   },
   {
     id: "captiveau-ai-match-analysis",
-    title: "AI Match Analysis & Computer Vision Tracking",
+    title: "Real-Time Computer Vision Match Tracking & Spatial Analytics",
     company: "Captiveau",
     description:
-      "Computer vision match analysis pipeline tracking player and ball trajectories with 85% tracking accuracy. Extracts spatial coordinates from match video feeds, cutting manual game-tagging time by 30% and delivering tactical summaries in under 5 seconds.",
-    highlight: "Real-time sports computer vision tracking & automated spatial tactical summaries.",
-    tech: ["Python", "Computer Vision", "OpenCV", "Deep Learning", "Video Processing"],
+      "A computer vision sports analytics pipeline tracking multi-agent player trajectories and ball kinematics from single-angle broadcast footage. Achieved 85% multi-object tracking accuracy on real-world clips, extracted continuous 2D on-field spatial coordinate telemetry, reduced manual game tagging time by 30%, and computed automated tactical summaries with sub-5-second processing latency.",
+    highlight: "Real-time multi-object computer vision tracking (85% accuracy), spatial trajectory mapping & automated event extraction.",
+    tech: ["Python", "Computer Vision", "OpenCV", "Deep Learning", "Object Tracking", "Spatial Analytics"],
     category: "ai",
-    categoryLabel: "AI & Computer Vision",
+    categoryLabel: "Computer Vision & AI",
     featured: true,
+    isML: true,
+  },
+  {
+    id: "toddler-nutrition-analysis",
+    title: "Pediatric Stunting Risk & Nutrition Predictive Analytics",
+    description:
+      "An applied machine learning and health informatics application for pediatric growth assessment and early stunting risk detection. Developed classification algorithms and statistical regression models benchmarked against World Health Organization (WHO) Anthro growth standards, automating z-score computation, risk stratification, and visual nutrition trend analysis.",
+    highlight: "Supervised growth metric classification, WHO z-score modeling & interactive clinical risk analytics.",
+    tech: ["Python", "Scikit-Learn", "Machine Learning", "Streamlit", "Pandas", "Statistical Modeling"],
+    category: "ai",
+    categoryLabel: "Applied Machine Learning",
+    url: "https://toddler-nutrition-analysis.streamlit.app/",
+    githubUrl: "https://github.com/Achmad96/toddler-nutrition-analysis",
+    featured: true,
+    isML: true,
   },
   {
     id: "umkm-desa-keduyung",
@@ -65,19 +82,6 @@ export const PROJECTS_METADATA: ProjectType[] = [
     categoryLabel: "Public Systems",
     url: "https://sumbermalang-smart.vercel.app/",
     githubUrl: "https://github.com/Achmad96/smart",
-    featured: true,
-  },
-  {
-    id: "toddler-nutrition-analysis",
-    title: "Toddler Nutrition & Stunting Analytics",
-    description:
-      "A data analytics application built with Streamlit and Python for assessing child growth metrics, identifying stunting risks, and benchmarking nutrition indicators against World Health Organization (WHO) standards.",
-    highlight: "WHO-benchmarked pediatric growth analytics and interactive data visualization.",
-    tech: ["Python", "Streamlit", "Pandas", "WHO Standards", "Data Visualization"],
-    category: "ai",
-    categoryLabel: "Data Analytics",
-    url: "https://toddler-nutrition-analysis.streamlit.app/",
-    githubUrl: "https://github.com/Achmad96/toddler-nutrition-analysis",
     featured: true,
   },
   {

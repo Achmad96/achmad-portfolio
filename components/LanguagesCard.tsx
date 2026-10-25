@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Languages, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 interface LanguageItem {
   name: string;
@@ -64,9 +64,8 @@ export default function LanguagesCard() {
   return (
     <div>
       {/* Clean section header matching Education & Certifications */}
-      <h3 className="text-lg font-semibold text-neutral-900 dark:text-white flex items-center gap-2 mb-4">
-        <Languages className="h-5 w-5 text-indigo-500" />
-        <span>Languages</span>
+      <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4">
+        Languages
       </h3>
 
       {/* Professional Card with subtle interactive micro-animations */}

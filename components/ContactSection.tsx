@@ -115,7 +115,7 @@ export default function ContactSection() {
             Contact
           </h2>
           <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl text-sm sm:text-base">
-            Reach out regarding engineering opportunities, AI projects, or collaboration. No account needed—submit on-page or launch straight from your personal mail client.
+            Reach out regarding machine learning opportunities, computer vision projects, or research collaboration. No account needed—submit on-page or launch straight from your personal mail client.
           </p>
         </div>
 

@@ -1,8 +1,8 @@
-# Achmad Raihan — Software & AI Engineer Portfolio
+# Achmad Raihan — Aspiring Machine Learning Engineer Portfolio
 
 A modern, high-impact personal portfolio website and headless technical publication platform built with **Next.js 16 (App Router + Turbopack)**, **React 19**, **TypeScript**, **Tailwind CSS v4**, and the **Notion API**.
 
-Designed with a clean, minimalist aesthetic inspired by modern design portfolios, featuring dynamic light and dark theme switching, an interactive vertical career timeline, a filterable production project showcase, headless Notion-powered articles, and an interactive CLI terminal emulator.
+Designed with a clean, minimalist aesthetic inspired by modern design portfolios, featuring dynamic light and dark theme switching, an interactive vertical career timeline, a filterable production project showcase, and headless Notion-powered articles.
 
 ---
 
@@ -15,7 +15,7 @@ Designed with a clean, minimalist aesthetic inspired by modern design portfolios
   - Curated typography pairing following designer portfolio standards:
     - **Headings**: `Montserrat` (geometric, modern, punchy display)
     - **Body & UI**: `Open Sans` (clean, neutral, high-legibility sans-serif)
-    - **Code & Metadata**: `Fira Code` (technical monospace for chips, dates, and terminal)
+    - **Code & Metadata**: `Fira Code` (technical monospace for chips and dates)
   - Zero Layout Shift (CLS) via Next.js self-hosted `next/font/google`.
 
 - **Dynamic Theme System (Light & Dark Mode)**:
@@ -26,12 +26,12 @@ Designed with a clean, minimalist aesthetic inspired by modern design portfolios
 - **Interactive Professional Timeline**:
 
   - Vertical timeline spine with geometric indicator pins and active pulse indicators on current roles.
-  - Documenting real software engineering, deep learning, and computer vision experience at **PT Jasa Web Indonesia (Webtocrat Motion Group)**, **Captiveau**, and **Freelance**.
-  - Quantified impact metrics (98% anomaly detection accuracy, 85% tracking accuracy, 10,000+ data row dashboard queries).
+  - Documenting applied machine learning, deep learning, computer vision, and systems development at **PT Jasa Web Indonesia (Webtocrat Motion Group)**, **Captiveau**, and **Freelance**.
+  - Quantified impact metrics (98% anomaly detection accuracy, 85% multi-object tracking accuracy, 10,000+ data row dashboard queries).
 
 - **Curated Projects Showcase**:
 
-  - Multi-category filter: _All Projects_, _AI & Machine Learning_, _Full-Stack Web_, _Public & Community_, and _Desktop & Systems_.
+  - Multi-category filter: _All Projects_, _Machine Learning & AI_, _Full-Stack Web_, _Public & Community_, and _Desktop & Systems_.
   - Direct repository links and proprietary project designations.
   - Features real systems including Nvidia NeMo fraud anomaly architectures, real-time match vision tracking, **UMKM Desa Keduyung**, and **Sumbermalang SMART**.
 
@@ -40,12 +40,6 @@ Designed with a clean, minimalist aesthetic inspired by modern design portfolios
   - Dynamic publication pages (`/articles` and `/articles/[slug]`) powered by the official Notion API (`@notionhq/client`, `notion-to-md`).
   - Next.js Incremental Static Regeneration (ISR) with blur image placeholders via `plaiceholder`.
   - Sticky Table of Contents sidebar with real-time scroll-spy section tracking, smooth scrolling, and 1-click article link sharing.
-
-- **Interactive CLI Terminal Modal**:
-
-  - Full-featured ZSH/Powerlevel10k-styled terminal emulator with customizable commands.
-  - Supports: `help`, `about`, `experience`, `projects`, `skills`, `education`, `articles`, `contact`, `theme`, and `clear`.
-  - Built-in `Tab` autocompletion, command history navigation (`↑` / `↓`), and one-click quick action chips.
 
 - **Contact & Communication Channels**:
   - Direct email with 1-click clipboard copy and toast notifications via `sonner`.
@@ -99,12 +93,7 @@ portfolio/
 │   ├── Navbar.tsx                # Sticky navbar with AR. brand & theme toggle
 │   ├── PaginationComponent.tsx   # Clean pagination buttons
 │   ├── Projects.tsx              # Filterable featured projects grid
-│   ├── Skills.tsx                # Categorized tech stack & brand icons
-│   ├── TerminalInput.tsx         # Terminal prompt with Zsh-style prefix
-│   ├── TerminalModal.tsx         # Terminal modal window with history & tab-complete
-│   └── TerminalOutput.tsx        # Terminal command & response renderer
-├── configs/
-│   └── TerminalCommands.tsx      # Interactive CLI commands definition
+│   └── Skills.tsx                # Categorized tech stack & brand icons
 ├── constants/
 │   └── ProjectsMetadata.ts       # Verified projects data & repository links
 ├── lib/

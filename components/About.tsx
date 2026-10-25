@@ -29,14 +29,14 @@ export default function About() {
           {/* Left Narrative: Clean, authentic human paragraphs */}
           <div className="space-y-5 text-sm leading-relaxed text-neutral-600 sm:text-base lg:col-span-7 dark:text-neutral-300">
             <p>
-              I am a <strong className="font-semibold text-neutral-900 dark:text-white">software engineer and Information Systems student</strong> based in Surabaya, Indonesia. My work centers on
-              building resilient full-stack applications and deploying practical machine learning models.
+              I am an <strong className="font-semibold text-neutral-900 dark:text-white">aspiring Machine Learning Engineer and Information Systems student</strong> based in Surabaya, Indonesia. My core focus lies in designing, training, and deploying applied machine learning models, deep neural architectures, and real-time computer vision systems.
             </p>
             <p>
-              Rather than treating AI and software development as separate silos, I build systems that connect both: computer vision pipelines for real-time spatial motion tracking in video feeds,
-              deep learning architectures for anomaly detection on high-volume transactional data, and responsive web platforms optimized for fast querying and clean interaction.
+              My hands-on experience spans synthesizing realistic financial datasets using Nvidia NeMo to solve severe fraud class imbalance, training deep anomaly detection networks to 98% inference accuracy, and engineering real-time computer vision pipelines for spatial video tracking. I prioritize rigorous model evaluation, low-latency inference, and solutions that solve tangible operational problems.
             </p>
-            <p>I value clean architecture, low-latency processing, and software that solves tangible operational problems efficiently.</p>
+            <p>
+              Leveraging a strong software engineering and systems foundation, I excel at bridging the gap between experimental data science notebooks and dependable, production-ready machine learning pipelines.
+            </p>
           </div>
 
           {/* Right Column: Clean, understated spec sheet (No nested pills, no fake badges) */}
@@ -47,6 +47,11 @@ export default function About() {
               </h3>
 
               <div className="divide-y divide-neutral-200/80 text-xs sm:text-sm dark:divide-neutral-800/80">
+                <div className="flex items-baseline justify-between gap-4 py-3.5">
+                  <span className="shrink-0 font-medium text-neutral-500">Focus</span>
+                  <span className="text-right font-medium text-teal-600 dark:text-teal-400 font-mono text-xs">Machine Learning &amp; Computer Vision</span>
+                </div>
+
                 <div className="flex items-baseline justify-between gap-4 py-3.5">
                   <span className="shrink-0 font-medium text-neutral-500">Degree</span>
                   <span className="text-right font-medium text-neutral-900 dark:text-neutral-100">S.Kom, Information System</span>
@@ -59,7 +64,7 @@ export default function About() {
 
                 <div className="flex items-baseline justify-between gap-4 py-3.5">
                   <span className="shrink-0 font-medium text-neutral-500">Primary Stack</span>
-                  <span className="text-right font-mono text-xs text-neutral-900 dark:text-neutral-100">Python, TypeScript, Java, C++</span>
+                  <span className="text-right font-mono text-xs text-neutral-900 dark:text-neutral-100">Python, PyTorch, Scikit-Learn, OpenCV, NeMo</span>
                 </div>
 
                 <div className="flex items-baseline justify-between gap-4 py-3.5">

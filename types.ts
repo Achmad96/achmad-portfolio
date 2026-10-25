@@ -42,10 +42,4 @@ type HeadingMapStruct = {
   sub?: HeadingMapStruct[];
 };
 
-type Command = {
-  command: string;
-  output: (string | React.ReactElement)[];
-  type?: "info" | "error" | "success";
-};
-
-export type { AuthorType, ArticleType, ArticleFormType, SingleArticlePageResponseType, TagType, HeadingType, HeadingMapStruct, Command };
+export type { AuthorType, ArticleType, ArticleFormType, SingleArticlePageResponseType, TagType, HeadingType, HeadingMapStruct };

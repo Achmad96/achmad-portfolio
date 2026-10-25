@@ -26,25 +26,28 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Achmad Raihan | Software & AI Engineer",
+  title: "Achmad Raihan | Machine Learning Engineer",
   description:
-    "Portfolio of Achmad Raihan — Software Engineer & Information Systems Student. Showcasing computer vision, machine learning, and full-stack web platforms.",
+    "Portfolio of Achmad Raihan — Aspiring Machine Learning Engineer & Information Systems Student. Showcasing deep learning architectures, computer vision pipelines, and intelligent data systems.",
   keywords: [
     "Achmad Raihan",
     "Portfolio",
-    "Software Engineer",
-    "AI Engineer",
+    "Machine Learning Engineer",
+    "Aspiring Machine Learning Engineer",
+    "Deep Learning",
     "Computer Vision",
     "Information Systems",
+    "PyTorch",
+    "Nvidia NeMo",
+    "Scikit-Learn",
+    "OpenCV",
     "Python",
     "TypeScript",
-    "React",
-    "Next.js",
   ],
   authors: [{ name: "Achmad Raihan" }],
   openGraph: {
-    title: "Achmad Raihan | Software & AI Engineer",
-    description: "Explore engineering work, AI models, and software projects by Achmad Raihan.",
+    title: "Achmad Raihan | Machine Learning Engineer",
+    description: "Explore machine learning models, deep learning architectures, and computer vision systems by Achmad Raihan.",
     type: "website",
     locale: "en_US",
   },
