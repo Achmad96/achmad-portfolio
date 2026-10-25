@@ -11,17 +11,13 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Column: Minimalist Typography & Actions */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-6">
-            <span className="text-xs font-mono tracking-widest text-teal-600 dark:text-teal-400 uppercase font-semibold">
-              Software Engineering &bull; AI Models &bull; Data Analytics
-            </span>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.1]">
               Hi, I&apos;m Achmad <br className="hidden sm:inline" />
               Raihan.
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-xl leading-relaxed">
-              A passionate developer and Information Systems student at UIN Sunan Ampel (UINSA), Surabaya. Experienced in building AI-powered computer vision systems, deep learning anomaly detection models, and full-stack digital platforms.
+              A passionate developer and Information Systems student based in Surabaya. Experienced in building AI-powered computer vision systems, deep learning anomaly detection models, and full-stack digital platforms.
             </p>
 
             {/* Pill-shaped Buttons & Social Links matching reference */}

@@ -28,7 +28,7 @@ const firaCode = Fira_Code({
 export const metadata: Metadata = {
   title: "Achmad Raihan | Software & AI Engineer",
   description:
-    "Portfolio of Achmad Raihan — Software Engineer & Information Systems Student at UIN Sunan Ampel (UINSA). Showcasing computer vision, machine learning, and full-stack web platforms.",
+    "Portfolio of Achmad Raihan — Software Engineer & Information Systems Student. Showcasing computer vision, machine learning, and full-stack web platforms.",
   keywords: [
     "Achmad Raihan",
     "Portfolio",
@@ -36,8 +36,6 @@ export const metadata: Metadata = {
     "AI Engineer",
     "Computer Vision",
     "Information Systems",
-    "UIN Sunan Ampel",
-    "UINSA",
     "Python",
     "TypeScript",
     "React",

@@ -1,17 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Command } from "@/types";
-import {
-  Terminal as TerminalIcon,
-  Sparkles,
-  Briefcase,
-  FolderGit2,
-  Cpu,
-  GraduationCap,
-  BookOpen,
-  Mail,
-  Palette,
-  CheckCircle2,
-} from "lucide-react";
+import { Terminal as TerminalIcon, Sparkles, Briefcase, FolderGit2, Cpu, GraduationCap, BookOpen, Mail, Palette, CheckCircle2 } from "lucide-react";
 import React from "react";
 
 const Title = ({
@@ -23,77 +12,35 @@ const Title = ({
   Icon: React.ReactNode | string;
   children: React.ReactNode;
 } & React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "flex items-center gap-2 font-mono font-bold text-sm sm:text-base text-teal-600 dark:text-teal-400 mt-2 mb-1",
-      className
-    )}
-    {...props}
-  >
+  <div className={cn("mt-2 mb-1 flex items-center gap-2 font-mono text-sm font-bold text-teal-600 sm:text-base dark:text-teal-400", className)} {...props}>
     {typeof Icon === "string" ? <span>{Icon}</span> : Icon}
     <span>{children}</span>
   </div>
 );
 
-const Section = ({
-  children,
-  className,
-  ...props
-}: { children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "font-mono font-semibold text-xs text-cyan-600 dark:text-cyan-400 uppercase tracking-wider mt-3 mb-1",
-      className
-    )}
-    {...props}
-  >
+const Section = ({ children, className, ...props }: { children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("mt-3 mb-1 font-mono text-xs font-semibold tracking-wider text-cyan-600 uppercase dark:text-cyan-400", className)} {...props}>
     {children}
   </div>
 );
 
-const Line = ({
-  children,
-  className,
-  ...props
-}: { children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn(
-      "font-mono text-xs sm:text-sm text-neutral-800 dark:text-neutral-200 leading-relaxed",
-      className
-    )}
-    {...props}
-  >
+const Line = ({ children, className, ...props }: { children: React.ReactNode } & React.HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("font-mono text-xs leading-relaxed text-neutral-800 sm:text-sm dark:text-neutral-200", className)} {...props}>
     {children}
   </div>
 );
 
-const Mark = ({
-  children,
-  className,
-  ...props
-}: { children: React.ReactNode } & React.HTMLAttributes<HTMLSpanElement>) => (
-  <code
-    className={cn(
-      "rounded bg-teal-500/10 dark:bg-teal-400/10 border border-teal-500/20 px-1.5 py-0.5 text-xs font-mono font-semibold text-teal-700 dark:text-teal-300",
-      className
-    )}
-    {...props}
-  >
+const Mark = ({ children, className, ...props }: { children: React.ReactNode } & React.HTMLAttributes<HTMLSpanElement>) => (
+  <code className={cn("rounded border border-teal-500/20 bg-teal-500/10 px-1.5 py-0.5 font-mono text-xs font-semibold text-teal-700 dark:bg-teal-400/10 dark:text-teal-300", className)} {...props}>
     {children}
   </code>
 );
 
-const Badge = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => (
+const Badge = ({ children, className }: { children: React.ReactNode; className?: string }) => (
   <span
     className={cn(
-      "inline-block px-2 py-0.5 text-[11px] font-mono rounded bg-neutral-200/80 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200 mr-1.5 my-0.5 font-medium",
-      className
+      "my-0.5 mr-1.5 inline-block rounded border border-neutral-300 bg-neutral-200/80 px-2 py-0.5 font-mono text-[11px] font-medium text-neutral-800 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200",
+      className,
     )}
   >
     {children}
@@ -113,10 +60,7 @@ const Link = ({
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className={cn(
-      "text-teal-600 dark:text-teal-400 underline underline-offset-2 hover:text-teal-700 dark:hover:text-teal-300 font-mono transition-colors",
-      className
-    )}
+    className={cn("font-mono text-teal-600 underline underline-offset-2 transition-colors hover:text-teal-700 dark:text-teal-400 dark:hover:text-teal-300", className)}
     {...props}
   >
     {children}
@@ -130,12 +74,11 @@ export const welcome: Command = {
       Achmad Raihan — Software &amp; AI Engineer
     </Title>,
     <Line key="welcome-sub" className="text-neutral-600 dark:text-neutral-400">
-      Information Systems @ UIN Sunan Ampel (UINSA), Surabaya &bull; AI Models, Computer Vision &amp; Full-Stack Systems
+      Software &amp; AI Engineer &bull; Information Systems, Surabaya
     </Line>,
     <div key="welcome-sp" className="my-1.5" />,
     <Line key="welcome-instruction">
-      Type <Mark>help</Mark> to inspect available commands, or jump straight to{" "}
-      <Mark>about</Mark>, <Mark>experience</Mark>, <Mark>projects</Mark>, <Mark>skills</Mark>.
+      Type <Mark>help</Mark> to inspect available commands, or jump straight to <Mark>about</Mark>, <Mark>experience</Mark>, <Mark>projects</Mark>, <Mark>skills</Mark>.
     </Line>,
   ],
 };
@@ -154,28 +97,21 @@ export const commands = {
           { cmd: "experience", desc: "Work timeline & industry engagements" },
           { cmd: "projects", desc: "Featured AI models, vision pipelines & web apps" },
           { cmd: "skills", desc: "Technical competencies, languages & tooling" },
-          { cmd: "education", desc: "UINSA degree & verified certifications" },
+          { cmd: "education", desc: "Degree & verified certifications" },
           { cmd: "articles", desc: "Technical publications & research notes" },
           { cmd: "contact", desc: "Email, LinkedIn, GitHub & location" },
           { cmd: "theme", desc: "Light / Dark theme status & switcher" },
           { cmd: "clear", desc: "Clear terminal history" },
           { cmd: "exit", desc: "Close this interactive terminal" },
         ].map((item) => (
-          <div
-            key={item.cmd}
-            className="flex items-baseline justify-between py-0.5 border-b border-neutral-200/50 dark:border-neutral-850/60"
-          >
-            <span className="font-bold text-teal-600 dark:text-teal-400 font-mono">
-              {item.cmd}
-            </span>
-            <span className="text-neutral-600 dark:text-neutral-400 text-xs">
-              {item.desc}
-            </span>
+          <div key={item.cmd} className="dark:border-neutral-850/60 flex items-baseline justify-between border-b border-neutral-200/50 py-0.5">
+            <span className="font-mono font-bold text-teal-600 dark:text-teal-400">{item.cmd}</span>
+            <span className="text-xs text-neutral-600 dark:text-neutral-400">{item.desc}</span>
           </div>
         ))}
       </div>,
       <div key="sp-bottom" className="mt-3" />,
-      <Line key="hint" className="text-neutral-500 text-xs">
+      <Line key="hint" className="text-xs text-neutral-500">
         Hint: You can click command names or type them below.
       </Line>,
     ],
@@ -188,17 +124,17 @@ export const commands = {
         About &bull; Achmad Raihan
       </Title>,
       <Line key="intro" className="mt-1">
-        I am an <strong className="text-neutral-900 dark:text-white font-semibold">Information Systems student &amp; software engineer</strong> based in Surabaya, studying at <strong className="text-neutral-900 dark:text-white font-semibold">UIN Sunan Ampel (UINSA)</strong>.
+        I am a <strong className="font-semibold text-neutral-900 dark:text-white">Software Engineer &amp; Information Systems student</strong> based in Surabaya.
       </Line>,
       <div key="sp1" className="my-1.5" />,
       <Line key="bio">
-        My technical work bridges applied deep learning, computer vision architectures (player/ball tracking, diffusion models, anomaly detection), and robust full-stack web platforms engineered for high throughput and clean UX.
+        My technical work bridges applied deep learning, computer vision architectures (spatial motion tracking, anomaly detection), and robust full-stack web platforms engineered for high throughput
+        and clean UX.
       </Line>,
       <Section key="quick-facts">Quick Facts</Section>,
-      <Line key="f1">&bull; Institution: UIN Sunan Ampel (UINSA), Surabaya</Line>,
-      <Line key="f2">&bull; Degree: B.Comp, Information System (2023 – 2027)</Line>,
-      <Line key="f3">&bull; Languages: Indonesian (Native), English (Professional), Japanese (Elementary)</Line>,
-      <Line key="f4">&bull; Location: Surabaya, East Java, Indonesia</Line>,
+      <Line key="f1">&bull; Degree: S.Kom, Information System (2023 – 2027)</Line>,
+      <Line key="f2">&bull; Languages: Indonesian (Native), English (Professional), Japanese (Elementary)</Line>,
+      <Line key="f3">&bull; Location: Surabaya, East Java, Indonesia</Line>,
     ],
   },
 
@@ -209,10 +145,8 @@ export const commands = {
         Professional Experience &amp; Engagements
       </Title>,
 
-      <Section key="job1">
-        1. Technical Programmer &bull; PT Jasa Web Indonesia (Webtocrat Motion Group)
-      </Section>,
-      <Line key="job1-time" className="text-xs text-neutral-500 font-mono">
+      <Section key="job1">1. Technical Programmer &bull; PT Jasa Web Indonesia (Webtocrat Motion Group)</Section>,
+      <Line key="job1-time" className="font-mono text-xs text-neutral-500">
         January 2026 – May 2026 &bull; Surabaya, Indonesia
       </Line>,
       <Line key="job1-b1">&bull; Developed automated image editing applications with diffusion models and computer vision.</Line>,
@@ -225,7 +159,7 @@ export const commands = {
       </div>,
 
       <Section key="job2">2. AI Engineer &bull; Captiveau</Section>,
-      <Line key="job2-time" className="text-xs text-neutral-500 font-mono">
+      <Line key="job2-time" className="font-mono text-xs text-neutral-500">
         January 2026 – April 2026 &bull; Surabaya, Indonesia
       </Line>,
       <Line key="job2-b1">&bull; Engineered AI match analysis system tracking player and ball positions with 85% accuracy.</Line>,
@@ -238,7 +172,7 @@ export const commands = {
       </div>,
 
       <Section key="job3">3. Software Engineer &bull; Freelance</Section>,
-      <Line key="job3-time" className="text-xs text-neutral-500 font-mono">
+      <Line key="job3-time" className="font-mono text-xs text-neutral-500">
         May 2025 – December 2025 &bull; Indonesia
       </Line>,
       <Line key="job3-b1">&bull; Engineered 3 customized full-stack digital marketplaces and interactive client portals.</Line>,
@@ -258,12 +192,8 @@ export const commands = {
         Featured Projects &amp; Systems
       </Title>,
 
-      <Section key="p1">
-        [01] Diffusion Fraud Anomaly Detection (PT Jasa Web Indonesia)
-      </Section>,
-      <Line key="p1-desc">
-        Deep learning architecture with 98% accuracy on transaction anomaly inference, trained with Nvidia NeMo synthetic data.
-      </Line>,
+      <Section key="p1">[01] Diffusion Fraud Anomaly Detection (PT Jasa Web Indonesia)</Section>,
+      <Line key="p1-desc">Deep learning architecture with 98% accuracy on transaction anomaly inference, trained with Nvidia NeMo synthetic data.</Line>,
       <div key="p1-badges">
         {["Python", "Nvidia NeMo", "Deep Learning", "Diffusion Models"].map((t) => (
           <Badge key={t}>{t}</Badge>
@@ -271,9 +201,7 @@ export const commands = {
       </div>,
 
       <Section key="p2">[02] Captiveau Match Vision Tracking (Captiveau)</Section>,
-      <Line key="p2-desc">
-        Real-time multi-agent computer vision system tracking players &amp; ball movement with 85% accuracy and spatial tactical summaries.
-      </Line>,
+      <Line key="p2-desc">Real-time multi-agent computer vision system tracking players &amp; ball movement with 85% accuracy and spatial tactical summaries.</Line>,
       <div key="p2-badges">
         {["Python", "Computer Vision", "OpenCV", "Spatial Tracking"].map((t) => (
           <Badge key={t}>{t}</Badge>
@@ -281,9 +209,7 @@ export const commands = {
       </div>,
 
       <Section key="p3">[03] UMKM Desa Keduyung &bull; Digital Marketplace</Section>,
-      <Line key="p3-desc">
-        Responsive public e-commerce &amp; showcase platform empowering local village business visibility.
-      </Line>,
+      <Line key="p3-desc">Responsive public e-commerce &amp; showcase platform empowering local village business visibility.</Line>,
       <div key="p3-badges">
         {["Next.js", "TypeScript", "Tailwind CSS"].map((t) => (
           <Badge key={t}>{t}</Badge>
@@ -291,21 +217,16 @@ export const commands = {
       </div>,
 
       <Section key="p4">[04] Sumbermalang SMART &bull; Public Portal</Section>,
-      <Line key="p4-desc">
-        Integrated village governance and administrative service portal built with Next.js and Tailwind.
-      </Line>,
+      <Line key="p4-desc">Integrated village governance and administrative service portal built with Next.js and Tailwind.</Line>,
       <div key="p4-badges">
         {["Next.js", "TypeScript", "Information Systems"].map((t) => (
           <Badge key={t}>{t}</Badge>
         ))}
       </div>,
 
-      <div key="sp-gh" className="mt-3 pt-2 border-t border-neutral-200 dark:border-neutral-800" />,
+      <div key="sp-gh" className="mt-3 border-t border-neutral-200 pt-2 dark:border-neutral-800" />,
       <Line key="gh-link">
-        Explore all repositories:{" "}
-        <Link href="https://github.com/Achmad96?tab=repositories">
-          github.com/Achmad96
-        </Link>
+        Explore all repositories: <Link href="https://github.com/Achmad96?tab=repositories">github.com/Achmad96</Link>
       </Line>,
     ],
   },
@@ -318,29 +239,19 @@ export const commands = {
       </Title>,
 
       <Section key="s-lang">Core Languages</Section>,
-      <Line key="s-lang-val">
-        Python &bull; TypeScript &bull; JavaScript &bull; C++ &bull; Java &bull; Kotlin &bull; Lua
-      </Line>,
+      <Line key="s-lang-val">Python &bull; TypeScript &bull; JavaScript &bull; C++ &bull; Java &bull; Kotlin &bull; Lua</Line>,
 
       <Section key="s-ai">AI, Machine Learning &amp; Computer Vision</Section>,
-      <Line key="s-ai-val">
-        PyTorch &bull; Nvidia NeMo &bull; OpenCV &bull; Scikit-Learn &bull; Streamlit &bull; Pandas &bull; NumPy &bull; Jupyter
-      </Line>,
+      <Line key="s-ai-val">PyTorch &bull; Nvidia NeMo &bull; OpenCV &bull; Scikit-Learn &bull; Streamlit &bull; Pandas &bull; NumPy &bull; Jupyter</Line>,
 
       <Section key="s-web">Frontend &amp; Full-Stack</Section>,
-      <Line key="s-web-val">
-        React.js &bull; Next.js &bull; Tailwind CSS &bull; HTML5 &bull; CSS3 &bull; Vite
-      </Line>,
+      <Line key="s-web-val">React.js &bull; Next.js &bull; Tailwind CSS &bull; HTML5 &bull; CSS3 &bull; Vite</Line>,
 
       <Section key="s-back">Backend &amp; Cloud</Section>,
-      <Line key="s-back-val">
-        Node.js &bull; Express.js &bull; NestJS &bull; Socket.io &bull; PostgreSQL &bull; MongoDB &bull; Prisma ORM &bull; Docker &bull; AWS &bull; Vercel
-      </Line>,
+      <Line key="s-back-val">Node.js &bull; Express.js &bull; NestJS &bull; Socket.io &bull; PostgreSQL &bull; MongoDB &bull; Prisma ORM &bull; Docker &bull; AWS &bull; Vercel</Line>,
 
       <Section key="s-tools">Developer Environment</Section>,
-      <Line key="s-tools-val">
-        Neovim &bull; VS Code &bull; Linux / Bash &bull; Git &bull; Postman
-      </Line>,
+      <Line key="s-tools-val">Neovim &bull; VS Code &bull; Linux / Bash &bull; Git &bull; Postman</Line>,
     ],
   },
 
@@ -353,9 +264,9 @@ export const commands = {
 
       <Section key="formal">Formal Degree</Section>,
       <Line key="school" className="font-semibold text-neutral-900 dark:text-white">
-        UIN Sunan Ampel (UINSA) &bull; Surabaya, Indonesia
+        Bachelor of Computer, Information System &bull; Surabaya, Indonesia
       </Line>,
-      <Line key="degree">Bachelor of Computer, Information System (Aug 2023 – Aug 2027)</Line>,
+      <Line key="degree">August 2023 – August 2027</Line>,
       <Line key="details" className="text-xs text-neutral-500">
         Core study: Computer science foundations, systems architecture, relational databases, applied ML.
       </Line>,
@@ -374,9 +285,7 @@ export const commands = {
       <Title key="art-title" Icon={<BookOpen className="h-4 w-4" />}>
         Articles &amp; Engineering Notes
       </Title>,
-      <Line key="art-desc">
-        Articles exploring software architecture, computer vision algorithms, and practical machine learning.
-      </Line>,
+      <Line key="art-desc">Articles exploring software architecture, computer vision algorithms, and practical machine learning.</Line>,
       <div key="sp-art" className="my-1.5" />,
       <Line key="art-link">
         &rarr; View all articles: <Link href="/articles">/articles</Link>
@@ -395,18 +304,13 @@ export const commands = {
       </Title>,
       <div key="sp-c" className="my-1" />,
       <Line key="email">
-        &bull; Direct Email:{" "}
-        <Link href="mailto:work.achmadraihan@gmail.com">work.achmadraihan@gmail.com</Link>
+        &bull; Direct Email: <Link href="mailto:work.achmadraihan@gmail.com">work.achmadraihan@gmail.com</Link>
       </Line>,
       <Line key="linkedin">
-        &bull; LinkedIn:{" "}
-        <Link href="https://www.linkedin.com/in/achmad-raihan-mamad">
-          linkedin.com/in/achmad-raihan-mamad
-        </Link>
+        &bull; LinkedIn: <Link href="https://www.linkedin.com/in/achmad-raihan-mamad">linkedin.com/in/achmad-raihan-mamad</Link>
       </Line>,
       <Line key="github">
-        &bull; GitHub:{" "}
-        <Link href="https://github.com/Achmad96">github.com/Achmad96</Link>
+        &bull; GitHub: <Link href="https://github.com/Achmad96">github.com/Achmad96</Link>
       </Line>,
       <Line key="location">&bull; Location: Surabaya, East Java, Indonesia</Line>,
     ],
@@ -421,7 +325,7 @@ export const commands = {
       <Line key="t1">
         This portfolio features dynamic <strong className="text-neutral-900 dark:text-white">Light Mode</strong> and <strong className="text-neutral-900 dark:text-white">Dark Mode</strong> support.
       </Line>,
-      <Line key="t2" className="text-neutral-500 text-xs">
+      <Line key="t2" className="text-xs text-neutral-500">
         Toggle the theme at any time using the Sun/Moon icon in the top-right navigation bar.
       </Line>,
     ],
@@ -437,10 +341,10 @@ export const ErrorCMDNotFound = (cmd: string): Command => {
   return {
     command: "",
     output: [
-      <div key="error-notfound" className="text-red-500 font-mono text-xs sm:text-sm">
+      <div key="error-notfound" className="font-mono text-xs text-red-500 sm:text-sm">
         Command not found: <span className="font-bold">{cmd}</span>
       </div>,
-      <div key="error-help" className="text-neutral-500 font-mono text-xs mt-0.5">
+      <div key="error-help" className="mt-0.5 font-mono text-xs text-neutral-500">
         Type <Mark>help</Mark> to inspect available commands.
       </div>,
     ],

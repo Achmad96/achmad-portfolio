@@ -129,7 +129,7 @@ const ArticleSide = ({ title, headings }: IArticleSide) => {
               Achmad Raihan
             </h4>
             <p className="text-[11px] text-neutral-500 dark:text-neutral-400">
-              Software &amp; AI Engineer &bull; UINSA
+              Software &amp; AI Engineer
             </p>
           </div>
         </div>

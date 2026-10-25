@@ -96,7 +96,7 @@ export const PROJECTS_METADATA: ProjectType[] = [
     id: "himaprosif-portal",
     title: "HIMAPROSIF Official Platform",
     description:
-      "Official academic organization web portal for Himpunan Mahasiswa Program Studi Sistem Informasi (UIN Sunan Ampel), managing department portfolios, announcements, and student activities.",
+      "Official academic organization web portal for Himpunan Mahasiswa Program Studi Sistem Informasi, managing department portfolios, announcements, and student activities.",
     highlight: "Official student association digital portal serving the Information Systems department.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
     category: "community",

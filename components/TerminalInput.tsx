@@ -5,7 +5,7 @@ export const TerminalInputPrefix = () => {
   return (
     <div className="mr-2 flex shrink-0 items-center gap-1.5 font-mono text-xs select-none">
       <span className="text-teal-600 dark:text-teal-400 font-bold">
-        achmad@uinsa
+        achmad@portfolio
       </span>
       <span className="text-neutral-400">:</span>
       <span className="text-cyan-600 dark:text-cyan-400 font-medium">

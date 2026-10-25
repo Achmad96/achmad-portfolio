@@ -174,7 +174,7 @@ export default function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
             />
             <span className="ml-3 font-mono text-xs font-semibold text-neutral-700 dark:text-neutral-300 flex items-center gap-1.5">
               <TerminalIcon className="h-3.5 w-3.5 text-teal-600 dark:text-teal-400" />
-              <span>AR. Terminal &bull; achmad@uinsa:~ (zsh)</span>
+              <span>AR. Terminal &bull; achmad@portfolio:~ (zsh)</span>
             </span>
           </div>
 

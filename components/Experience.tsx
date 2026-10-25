@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Briefcase, GraduationCap, Award, Languages, MapPin, Calendar, CheckCircle2 } from "lucide-react";
+import { Briefcase, GraduationCap, Award, MapPin, Calendar, CheckCircle2 } from "lucide-react";
+import LanguagesCard from "@/components/LanguagesCard";
 
 export default function Experience() {
   const experiences = [
@@ -44,7 +45,6 @@ export default function Experience() {
   ];
 
   const education = {
-    school: "UIN Sunan Ampel (UINSA)",
     degree: "Bachelor of Computer, Information System",
     period: "August 2023 – August 2027",
     location: "Surabaya, East Java, Indonesia",
@@ -69,12 +69,6 @@ export default function Experience() {
       name: "Microsoft Office Specialist: Word Associate",
       issuer: "Word and Word 2019",
     },
-  ];
-
-  const languages = [
-    { name: "Indonesian", level: "Native / Bilingual" },
-    { name: "English", level: "Professional Working" },
-    { name: "Japanese", level: "Elementary" },
   ];
 
   return (
@@ -176,7 +170,6 @@ export default function Experience() {
               <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 p-6 backdrop-blur-sm space-y-3 shadow-sm hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
                 <span className="text-xs font-mono text-cyan-600 dark:text-cyan-400 block font-semibold">{education.period}</span>
                 <h4 className="font-bold text-base text-neutral-900 dark:text-white leading-snug">{education.degree}</h4>
-                <div className="text-xs font-semibold text-neutral-700 dark:text-neutral-300">{education.school}</div>
                 <div className="text-xs text-neutral-500 flex items-center gap-1">
                   <MapPin className="h-3 w-3" />
                   <span>{education.location}</span>
@@ -203,21 +196,8 @@ export default function Experience() {
               </div>
             </div>
 
-            {/* Languages Card */}
-            <div>
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-white flex items-center gap-2 mb-4">
-                <Languages className="h-5 w-5 text-indigo-500" />
-                <span>Languages</span>
-              </h3>
-              <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/70 dark:bg-neutral-900/40 p-6 backdrop-blur-sm space-y-3 shadow-sm hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
-                {languages.map((lang, lIdx) => (
-                  <div key={lIdx} className="flex items-center justify-between text-xs py-1 border-b border-neutral-200/50 dark:border-neutral-800/50 last:border-b-0">
-                    <span className="font-medium text-neutral-900 dark:text-neutral-200">{lang.name}</span>
-                    <span className="text-neutral-500 font-mono text-[11px]">{lang.level}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Languages Card with Realtime Duolingo Sync */}
+            <LanguagesCard />
           </div>
         </div>
       </div>

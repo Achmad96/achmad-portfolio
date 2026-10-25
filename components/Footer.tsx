@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
+import SpotifyStatus from "@/components/SpotifyStatus";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -18,9 +19,12 @@ export default function Footer() {
               AR.
             </Link>
             <p className="text-xs text-neutral-500">
-              Information Systems @ UIN Sunan Ampel (UINSA)
+              Software Engineer &bull; Information Systems
             </p>
           </div>
+
+          {/* Spotify Live Status */}
+          <SpotifyStatus />
 
           {/* Social Links */}
           <div className="flex items-center gap-3">
