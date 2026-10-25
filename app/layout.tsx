@@ -1,7 +1,29 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import { Montserrat, Open_Sans, Fira_Code } from "next/font/google";
 import Provider from "@/providers/Provider";
 import { Toaster } from "@/components/ui/sonner";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const firaCode = Fira_Code({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+  weight: ["400", "500", "600"],
+});
 
 export const metadata: Metadata = {
   title: "Achmad Raihan | Software & AI Engineer",
@@ -32,8 +54,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className="min-h-screen bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased selection:bg-teal-500/30 selection:text-teal-800 dark:selection:text-teal-200">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`scroll-smooth ${montserrat.variable} ${openSans.variable} ${firaCode.variable}`}
+    >
+      <body className="min-h-screen font-sans bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased selection:bg-teal-500/30 selection:text-teal-800 dark:selection:text-teal-200">
         <Provider>
           {children}
         </Provider>
