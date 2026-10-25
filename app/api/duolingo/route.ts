@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export async function GET() {
   const username = process.env.DUOLINGO_USERNAME || "Achmad96";
@@ -60,7 +60,12 @@ export async function GET() {
 
     if (!res.ok) {
       console.warn(`[Duolingo API] HTTP ${res.status} from Duolingo server.`);
-      return NextResponse.json(fallbackData);
+      return NextResponse.json(fallbackData, {
+        headers: {
+          "Cache-Control":
+            "public, max-age=60, s-maxage=60, stale-while-revalidate=120",
+        },
+      });
     }
 
     const json = await res.json();
@@ -68,7 +73,12 @@ export async function GET() {
 
     if (!user) {
       console.warn(`[Duolingo API] No user found for ${username}`);
-      return NextResponse.json(fallbackData);
+      return NextResponse.json(fallbackData, {
+        headers: {
+          "Cache-Control":
+            "public, max-age=60, s-maxage=60, stale-while-revalidate=120",
+        },
+      });
     }
 
     const totalXp = Number(user.totalXp) || 3689;
@@ -117,25 +127,38 @@ export async function GET() {
       },
     ];
 
-    return NextResponse.json({
-      success: true,
-      username: user.username || username,
-      name: user.name || "Achmad",
-      streak,
-      totalXp,
-      profileUrl: `https://www.duolingo.com/profile/${user.username || username}`,
-      picture: user.picture
-        ? user.picture.startsWith("//")
-          ? `https:${user.picture}`
-          : user.picture
-        : null,
-      courses,
-      languages,
-      lastUpdated: new Date().toISOString(),
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        username: user.username || username,
+        name: user.name || "Achmad",
+        streak,
+        totalXp,
+        profileUrl: `https://www.duolingo.com/profile/${user.username || username}`,
+        picture: user.picture
+          ? user.picture.startsWith("//")
+            ? `https:${user.picture}`
+            : user.picture
+          : null,
+        courses,
+        languages,
+        lastUpdated: new Date().toISOString(),
+      },
+      {
+        headers: {
+          "Cache-Control":
+            "public, max-age=300, s-maxage=300, stale-while-revalidate=600",
+        },
+      }
+    );
   } catch (error: any) {
     console.error("[Duolingo API Error]:", error?.message || error);
-    return NextResponse.json(fallbackData);
+    return NextResponse.json(fallbackData, {
+      headers: {
+        "Cache-Control":
+          "public, max-age=60, s-maxage=60, stale-while-revalidate=120",
+      },
+    });
   }
 }
 

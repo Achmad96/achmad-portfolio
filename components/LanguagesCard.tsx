@@ -24,16 +24,29 @@ export default function LanguagesCard() {
   const [duo, setDuo] = useState<DuolingoResponse | null>(null);
 
   useEffect(() => {
-    fetch("/api/duolingo")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((json) => {
-        if (json && json.success) {
-          setDuo(json);
-        }
-      })
-      .catch(() => {
-        // Silent fallback to static values
-      });
+    const fetchDuolingo = () => {
+      fetch("/api/duolingo")
+        .then((res) => (res.ok ? res.json() : null))
+        .then((json) => {
+          if (json && json.success) {
+            setDuo(json);
+          }
+        })
+        .catch(() => {
+          // Silent fallback to static values
+        });
+    };
+
+    fetchDuolingo();
+
+    // Revalidate every 5 minutes when tab is visible
+    const interval = setInterval(() => {
+      if (typeof document !== "undefined" && document.visibilityState === "visible") {
+        fetchDuolingo();
+      }
+    }, 5 * 60 * 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const totalXp = duo?.totalXp || 3689;

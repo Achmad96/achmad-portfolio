@@ -9,7 +9,7 @@ import { ArrowLeft, BookOpen } from "lucide-react";
 
 const PAGE_SIZE = 6;
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
 interface IArticlesPage {
   searchParams: Promise<{

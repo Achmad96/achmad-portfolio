@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 300;
 
 export async function GET() {
   const username = process.env.LEETCODE_USERNAME || "achmad-raihan";
@@ -49,12 +49,18 @@ export async function GET() {
         query,
         variables: { username },
       }),
-      next: { revalidate: 600 }, // Cache for 10 minutes
+      cache: "force-cache",
+      next: { revalidate: 300 }, // Cache and revalidate every 5 minutes
     });
 
     if (!res.ok) {
       console.warn(`[LeetCode API] HTTP ${res.status} from LeetCode GraphQL.`);
-      return NextResponse.json(fallbackData);
+      return NextResponse.json(fallbackData, {
+        headers: {
+          "Cache-Control":
+            "public, max-age=60, s-maxage=60, stale-while-revalidate=120",
+        },
+      });
     }
 
     const json = await res.json();
@@ -62,7 +68,12 @@ export async function GET() {
 
     if (!matchedUser) {
       console.warn(`[LeetCode API] User ${username} not found.`);
-      return NextResponse.json(fallbackData);
+      return NextResponse.json(fallbackData, {
+        headers: {
+          "Cache-Control":
+            "public, max-age=60, s-maxage=60, stale-while-revalidate=120",
+        },
+      });
     }
 
     const acSubmissions: Array<{ difficulty: string; count: number }> =
@@ -77,22 +88,35 @@ export async function GET() {
     const hardSolved =
       acSubmissions.find((s) => s.difficulty === "Hard")?.count ?? 0;
 
-    return NextResponse.json({
-      success: true,
-      username,
-      realName: matchedUser?.profile?.realName || "Achmad Raihan",
-      ranking: matchedUser?.profile?.ranking || 0,
-      totalSolved,
-      easySolved,
-      mediumSolved,
-      hardSolved,
-      profileUrl: `https://leetcode.com/u/${username}/`,
-      userAvatar: matchedUser?.profile?.userAvatar || null,
-      lastUpdated: new Date().toISOString(),
-    });
+    return NextResponse.json(
+      {
+        success: true,
+        username,
+        realName: matchedUser?.profile?.realName || "Achmad Raihan",
+        ranking: matchedUser?.profile?.ranking || 0,
+        totalSolved,
+        easySolved,
+        mediumSolved,
+        hardSolved,
+        profileUrl: `https://leetcode.com/u/${username}/`,
+        userAvatar: matchedUser?.profile?.userAvatar || null,
+        lastUpdated: new Date().toISOString(),
+      },
+      {
+        headers: {
+          "Cache-Control":
+            "public, max-age=300, s-maxage=300, stale-while-revalidate=600",
+        },
+      }
+    );
   } catch (error: any) {
     console.error("[LeetCode API Error]:", error?.message || error);
-    return NextResponse.json(fallbackData);
+    return NextResponse.json(fallbackData, {
+      headers: {
+        "Cache-Control":
+          "public, max-age=60, s-maxage=60, stale-while-revalidate=120",
+      },
+    });
   }
 }
 

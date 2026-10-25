@@ -19,16 +19,29 @@ export default function LeetCodeCard() {
   const [stats, setStats] = useState<LeetCodeStats | null>(null);
 
   useEffect(() => {
-    fetch("/api/leetcode")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((json) => {
-        if (json && json.success) {
-          setStats(json);
-        }
-      })
-      .catch(() => {
-        // Fallback handled gracefully
-      });
+    const fetchLeetCode = () => {
+      fetch("/api/leetcode")
+        .then((res) => (res.ok ? res.json() : null))
+        .then((json) => {
+          if (json && json.success) {
+            setStats(json);
+          }
+        })
+        .catch(() => {
+          // Fallback handled gracefully
+        });
+    };
+
+    fetchLeetCode();
+
+    // Revalidate every 5 minutes when tab is visible
+    const interval = setInterval(() => {
+      if (typeof document !== "undefined" && document.visibilityState === "visible") {
+        fetchLeetCode();
+      }
+    }, 5 * 60 * 1000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const total = stats?.totalSolved || 0;

@@ -11,7 +11,7 @@ import ArticleSide from "@/components/ArticleSide";
 import Link from "next/link";
 import { ArrowLeft, Calendar } from "lucide-react";
 
-export const revalidate = 3600;
+export const revalidate = 300;
 
 const ArticlePage = async ({
   params,
