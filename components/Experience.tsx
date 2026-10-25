@@ -7,7 +7,7 @@ import LeetCodeCard from "@/components/LeetCodeCard";
 export default function Experience() {
   const experiences = [
     {
-      period: "January 2026 – May 2026",
+      period: "January 2026 - May 2026",
       role: "Technical Programmer",
       company: "PT Jasa Web Indonesia (Webtocrat Motion Group)",
       location: "Surabaya, Indonesia",
@@ -19,7 +19,7 @@ export default function Experience() {
       tech: ["Python", "Nvidia NeMo", "Machine Learning", "Diffusion Models"],
     },
     {
-      period: "January 2026 – April 2026",
+      period: "January 2026 - April 2026",
       role: "AI Engineer",
       company: "Captiveau",
       location: "Surabaya, Indonesia",
@@ -31,7 +31,7 @@ export default function Experience() {
       tech: ["Python", "Computer Vision", "OpenCV", "Deep Learning", "Spatial Analytics", "Video Processing"],
     },
     {
-      period: "May 2025 – December 2025",
+      period: "May 2025 - December 2025",
       role: "Software Engineer",
       company: "Freelance",
       location: "Indonesia",
