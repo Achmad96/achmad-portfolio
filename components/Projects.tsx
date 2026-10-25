@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ExternalLink, Github, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { PROJECTS_METADATA, ProjectCategory } from "@/constants/ProjectsMetadata";
 
 const ITEMS_PER_PAGE = 6;
@@ -89,22 +89,14 @@ export default function Projects() {
                   : "border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 hover:border-neutral-300 dark:hover:border-neutral-700"
               }`}
             >
-              <div className="space-y-3">
-                {/* Header: Category, ML Badge & Company */}
-                <div className="flex items-center justify-between text-xs">
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs text-neutral-500">
-                      {project.categoryLabel}
-                    </span>
-                    {project.isML && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-teal-500/15 dark:bg-teal-500/20 px-2 py-0.5 text-[10px] font-mono font-semibold text-teal-700 dark:text-teal-300 border border-teal-500/30">
-                        <Sparkles className="h-2.5 w-2.5 text-teal-600 dark:text-teal-400" />
-                        ML Focus
-                      </span>
-                    )}
-                  </div>
+              <div className="space-y-3.5">
+                {/* Header: Consistent Category (Top-Left) & Company (Top-Right) */}
+                <div className="flex items-center justify-between gap-3 text-xs">
+                  <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 font-medium">
+                    {project.categoryLabel}
+                  </span>
                   {project.company && (
-                    <span className="text-[11px] text-neutral-500 dark:text-neutral-400 font-medium">
+                    <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 shrink-0">
                       {project.company}
                     </span>
                   )}
