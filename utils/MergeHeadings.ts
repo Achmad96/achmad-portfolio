@@ -18,10 +18,7 @@ const mergeHeadings = (headings: HeadingMapStruct[]): HeadingMapStruct[] => {
       sub: [],
     };
 
-    while (
-      stack.length > 0 &&
-      stack[stack.length - 1].type >= newHeading.type
-    ) {
+    while (stack.length > 0 && stack[stack.length - 1].type >= newHeading.type) {
       stack.pop();
     }
 

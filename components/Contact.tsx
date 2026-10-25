@@ -1,74 +1,89 @@
 "use client";
-import { KeyboardEvent, FormEvent, useRef } from "react";
-import { toast } from "react-toastify";
 
-import { ToastContainer } from "react-toastify";
-import { DEFAULT_TOAST_CONFIG } from "constants/ToastConfig";
+import alert from "@/lib/alert";
 
-const Contact = () => {
-  const ref = useRef<HTMLTextAreaElement | null>(null);
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "./ui/textarea";
+
+const formSchema = z.object({
+  username: z.string().min(5, {
+    message: "Username must be at least 5 characters.",
+  }),
+  messages: z.string().min(10, {
+    message: "Messages must be at least 10 characters.",
+  }),
+});
+
+function ProfileForm() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      username: "",
+      messages: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.parse(JSON.stringify(values)),
+    });
+    if (res.ok) {
+      const elements = document.querySelectorAll('input[name="username"], textarea[name="messages"]');
+      elements.forEach((element: any) => (element.value = ""));
+      alert.success("Successfully sent an email!");
+    } else {
+      alert.error("Failed to sent email!");
+    }
+  }
+
   return (
-    <div className="flex h-screen w-full items-center justify-center">
-      <ToastContainer {...DEFAULT_TOAST_CONFIG} />
-      <form
-        autoComplete="off"
-        className="flex w-[50%] flex-col justify-start gap-5 max-md:w-[80%]"
-        onSubmit={async (e) => {
-          e.preventDefault();
-          const res = await fetch("/api/contact", {
-            method: "POST",
-            body: new FormData(e.currentTarget),
-          });
-          if (res.ok) {
-            const elements = document.querySelectorAll(
-              'input[name="username"], textarea[name="messages"]',
-            );
-            elements.forEach((v: any) => (v.value = ""));
-            toast.success("Successfully sent an email!", {
-              ...DEFAULT_TOAST_CONFIG,
-            });
-          } else {
-            toast.error("Failed to sent email!", {
-              ...DEFAULT_TOAST_CONFIG,
-            });
-          }
-        }}
-      >
-        <h1 className="text-3xl">Connect with me &#129303;</h1>
-        <label className="input-bordered input flex items-center gap-2">
-          <input
-            type="text"
-            name="username"
-            className="grow"
-            placeholder="Your name"
-            autoComplete="off"
-          />
-        </label>
-        <textarea
-          placeholder="Messages"
-          maxLength={200}
-          ref={ref}
-          name="messages"
-          className="textarea-bordered textarea resize-none overflow-hidden"
-          onInput={(e: FormEvent<HTMLTextAreaElement>) => {
-            if (ref.current && e.currentTarget.scrollHeight <= 120) {
-              ref.current.style.height = "auto";
-              ref.current.style.height = `${e.currentTarget.scrollHeight}px`;
-            }
-          }}
-          onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) => {
-            if (ref.current && e.key === "Enter") {
-              e.preventDefault();
-            }
-          }}
-          required
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-[75%] space-y-8">
+        <FormField
+          control={form.control}
+          name="username"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Username</FormLabel>
+              <FormControl>
+                <Input placeholder="shadcn" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-        <div className="flex justify-end">
-          <input type="submit" className="btn" />
-        </div>
+        <FormField
+          control={form.control}
+          name="messages"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Messages</FormLabel>
+              <FormControl>
+                <Textarea placeholder="Enter your messages here..." {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit">Submit</Button>
       </form>
-    </div>
+    </Form>
+  );
+}
+
+const ContactPage = () => {
+  return (
+    <section className="flex h-screen w-full items-center justify-center">
+      <ProfileForm />
+    </section>
   );
 };
 
-export default Contact;
+export default ContactPage;

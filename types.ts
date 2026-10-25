@@ -34,6 +34,7 @@ type TagType = {
 };
 
 type HeadingType = "heading_1" | "heading_2" | "heading_3";
+
 type HeadingMapStruct = {
   id: string;
   text: string;
@@ -41,12 +42,10 @@ type HeadingMapStruct = {
   sub?: HeadingMapStruct[];
 };
 
-export type {
-  AuthorType,
-  ArticleType,
-  ArticleFormType,
-  SingleArticlePageResponseType,
-  TagType,
-  HeadingType,
-  HeadingMapStruct,
+type Command = {
+  command: string;
+  output: (string | React.ReactElement)[];
+  type?: "info" | "error" | "success";
 };
+
+export type { AuthorType, ArticleType, ArticleFormType, SingleArticlePageResponseType, TagType, HeadingType, HeadingMapStruct, Command };

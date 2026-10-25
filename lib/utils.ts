@@ -1,3 +1,18 @@
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+const isValidUUID = (uuid?: string): boolean => {
+  return uuid
+    ? uuid.match(
+        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i,
+      )?.length === 1
+    : false;
+};
+
 const formatDescription = (description: any): string => {
   description = description.rich_text
     .map((word: any) => word.plain_text)
@@ -31,4 +46,5 @@ const formatDate = (date: string): string => {
 const formatSlug = (str: string): string => {
   return str.replace(/\s+/g, "-").toLowerCase();
 };
-export { formatDescription, formatDate, formatSlug };
+
+export { cn, isValidUUID, formatDescription, formatDate, formatSlug };

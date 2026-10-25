@@ -1,44 +1,88 @@
-import Link from "next/link";
-import { FaGithub, FaYoutube, FaLinkedin, FaInstagram } from "react-icons/fa";
+"use client";
 
-const Footer = () => {
+import React from "react";
+import Link from "next/link";
+import { ArrowUp, Github, Linkedin, Mail } from "lucide-react";
+
+export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="flex h-[10dvh] items-center justify-between border-t-[1px]  border-t-slate-800 px-10 max-md:h-[12dvh] max-md:flex-col max-md:justify-center max-md:gap-3">
-      <div className="flex items-center justify-center gap-10 max-sm:gap-7">
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href={"https://github.com/Achmad96"}
-        >
-          <FaGithub className="h-6 w-6 max-md:h-5 max-md:w-5" />
-        </Link>
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href={"https://www.linkedin.com/in/achmad-raihan-185b6124b/"}
-        >
-          <FaLinkedin className="h-6 w-6 max-md:h-5 max-md:w-5" />
-        </Link>
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href={"https://www.instagram.com/mamadd_aja/"}
-        >
-          <FaInstagram className="h-6 w-6 max-md:h-5 max-md:w-5" />
-        </Link>
-        <Link
-          target="_blank"
-          rel="noopener noreferrer"
-          href={"https://www.youtube.com/@Achmad325"}
-        >
-          <FaYoutube className="h-6 w-6 max-md:h-5 max-md:w-5" />
-        </Link>
-      </div>
-      <div className="flex flex-col text-xs max-md:items-center">
-        <p>Copyright © 2024 by Achmad Raihan</p>
-        <p>All rights reserved</p>
+    <footer className="border-t border-neutral-200 dark:border-neutral-900 bg-white dark:bg-neutral-950 py-10 relative transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-neutral-200 dark:border-neutral-900">
+          <div className="flex flex-col items-center md:items-start space-y-1">
+            <Link href="/" className="text-xl font-black text-neutral-900 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+              AR.
+            </Link>
+            <p className="text-xs text-neutral-500">
+              Information Systems @ UIN Sunan Ampel (UINSA)
+            </p>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-3">
+            <a
+              href="https://github.com/Achmad96"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
+              title="GitHub"
+            >
+              <Github className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/achmad-raihan-mamad"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
+              title="LinkedIn"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
+            <a
+              href="mailto:work.achmadraihan@gmail.com"
+              className="p-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
+              title="Email"
+            >
+              <Mail className="h-4 w-4" />
+            </a>
+            <button
+              onClick={scrollToTop}
+              className="p-2 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-100 dark:bg-neutral-900 text-neutral-600 dark:text-neutral-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors"
+              title="Back to Top"
+            >
+              <ArrowUp className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
+          <p>&copy; {new Date().getFullYear()} Achmad Raihan.</p>
+          <div className="flex items-center gap-4">
+            <Link href="#about" className="hover:text-neutral-900 dark:hover:text-neutral-300 transition-colors">
+              About
+            </Link>
+            <Link href="#experience" className="hover:text-neutral-900 dark:hover:text-neutral-300 transition-colors">
+              Experience
+            </Link>
+            <Link href="#projects" className="hover:text-neutral-900 dark:hover:text-neutral-300 transition-colors">
+              Projects
+            </Link>
+            <Link href="#skills" className="hover:text-neutral-900 dark:hover:text-neutral-300 transition-colors">
+              Skills
+            </Link>
+            <Link href="/articles" className="hover:text-neutral-900 dark:hover:text-neutral-300 transition-colors">
+              Articles
+            </Link>
+            <Link href="#contact" className="hover:text-neutral-900 dark:hover:text-neutral-300 transition-colors">
+              Contact
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );
-};
-export default Footer;
+}

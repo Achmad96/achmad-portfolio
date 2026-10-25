@@ -19,16 +19,7 @@ interface ImageWithoutBlurInterface {
 
 const ImageWithoutBlur = (props: ImageWithoutBlurInterface) => {
   const { src, alt, sizes, className } = props;
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      priority={true}
-      fill={true}
-      sizes={sizes}
-      className={className}
-    />
-  );
+  return <Image src={src} alt={alt} priority={true} fill={true} sizes={sizes} className={className} />;
 };
 
 interface ImageWithBlurInterface {
