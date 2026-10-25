@@ -8,7 +8,7 @@ export default function Experience() {
   const experiences = [
     {
       period: "January 2026 – May 2026",
-      role: "Machine Learning & CV Developer",
+      role: "Technical Programmer",
       company: "PT Jasa Web Indonesia (Webtocrat Motion Group)",
       location: "Surabaya, Indonesia",
       bullets: [
@@ -16,11 +16,11 @@ export default function Experience() {
         "Built a synthetic transaction generator using Nvidia NeMo Data Designer to solve acute class imbalance and support the training of robust fraud detection models.",
         "Utilized diffusion models and modern computer vision techniques to develop an intelligent image editing application capable of automated manipulation in production.",
       ],
-      tech: ["Python", "PyTorch", "Nvidia NeMo", "Deep Learning", "Computer Vision", "Diffusion Models"],
+      tech: ["Python", "Nvidia NeMo", "Machine Learning", "Diffusion Models"],
     },
     {
       period: "January 2026 – April 2026",
-      role: "AI & Computer Vision Engineer",
+      role: "AI Engineer",
       company: "Captiveau",
       location: "Surabaya, Indonesia",
       bullets: [
@@ -32,7 +32,7 @@ export default function Experience() {
     },
     {
       period: "May 2025 – December 2025",
-      role: "ML & Full-Stack Developer",
+      role: "Software Engineer",
       company: "Freelance",
       location: "Indonesia",
       bullets: [
