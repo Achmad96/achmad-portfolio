@@ -48,8 +48,7 @@ export default function Experience() {
     degree: "Bachelor of Computer, Information System",
     period: "August 2023 – August 2027",
     location: "Surabaya, Indonesia",
-    details:
-      "Specializing in applied machine learning, neural networks, computer vision, data analytics, and database systems architecture.",
+    details: "Specializing in applied machine learning, neural networks, computer vision, data analytics, and database systems architecture.",
   };
 
   const certifications = [
@@ -72,73 +71,57 @@ export default function Experience() {
   ];
 
   return (
-    <section
-      id="experience"
-      className="py-24 relative overflow-hidden bg-white dark:bg-neutral-950 border-t border-neutral-200 dark:border-neutral-900 transition-colors"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="relative overflow-hidden border-t border-neutral-200 bg-white py-24 transition-colors dark:border-neutral-900 dark:bg-neutral-950">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="flex flex-col items-start mb-14 space-y-2">
-          <span className="text-xs font-mono tracking-wider text-teal-600 dark:text-teal-400 uppercase font-semibold">
-            Track Record
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-white tracking-tight">
-            Work Experience &amp; Education
-          </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl text-sm sm:text-base">
+        <div className="mb-14 flex flex-col items-start space-y-2">
+          <span className="font-mono text-xs font-semibold tracking-wider text-teal-600 uppercase dark:text-teal-400">Track Record</span>
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">Work Experience &amp; Education</h2>
+          <p className="max-w-2xl text-sm text-neutral-600 sm:text-base dark:text-neutral-400">
             Applied machine learning, deep learning architectures, computer vision pipelines, and production systems.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left Column: Work Experience */}
-          <div className="lg:col-span-8 space-y-6">
-            <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">
-              Professional Experience
-            </h3>
+          <div className="space-y-6 lg:col-span-8">
+            <h3 className="text-lg font-semibold text-neutral-900 dark:text-white">Professional Experience</h3>
 
             {/* Clean Timeline */}
-            <div className="relative border-l border-neutral-200 dark:border-neutral-800 ml-2 sm:ml-2.5 space-y-6 pb-2">
+            <div className="relative ml-2 space-y-6 border-l border-neutral-200 pb-2 sm:ml-2.5 dark:border-neutral-800">
               {experiences.map((exp, index) => (
-                <div key={index} className="relative pl-6 sm:pl-8 group">
+                <div key={index} className="group relative pl-6 sm:pl-8">
                   {/* Understated Minimal Node */}
-                  <div className="absolute -left-[5px] top-6 h-2.5 w-2.5 rounded-full bg-neutral-400 dark:bg-neutral-600 ring-4 ring-white dark:ring-neutral-950 group-hover:bg-teal-500 transition-colors" />
+                  <div className="absolute top-6 -left-[5px] h-2.5 w-2.5 rounded-full bg-neutral-400 ring-4 ring-white transition-colors group-hover:bg-teal-500 dark:bg-neutral-600 dark:ring-neutral-950" />
 
                   {/* Experience Card */}
-                  <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 p-6 sm:p-7 backdrop-blur-sm space-y-4 hover:border-neutral-300 dark:hover:border-neutral-700 transition-colors">
+                  <div className="space-y-4 rounded-2xl border border-neutral-200 bg-neutral-50/50 p-6 backdrop-blur-sm transition-colors hover:border-neutral-300 sm:p-7 dark:border-neutral-800 dark:bg-neutral-900/40 dark:hover:border-neutral-700">
                     {/* Header: Role, Company & Date */}
-                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1.5 border-b border-neutral-200/70 dark:border-neutral-800/80 pb-3.5">
+                    <div className="flex flex-col justify-between gap-1.5 border-b border-neutral-200/70 pb-3.5 sm:flex-row sm:items-baseline dark:border-neutral-800/80">
                       <div>
-                        <h4 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white tracking-tight">
-                          {exp.role}
-                        </h4>
-                        <div className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 font-medium mt-0.5">
+                        <h4 className="text-base font-bold tracking-tight text-neutral-900 sm:text-lg dark:text-white">{exp.role}</h4>
+                        <div className="mt-0.5 text-xs font-medium text-neutral-600 sm:text-sm dark:text-neutral-400">
                           {exp.company} <span className="text-neutral-400 dark:text-neutral-600">&bull;</span> {exp.location}
                         </div>
                       </div>
 
-                      <div className="text-xs font-mono text-neutral-500 shrink-0">
-                        {exp.period}
-                      </div>
+                      <div className="shrink-0 font-mono text-xs text-neutral-500">{exp.period}</div>
                     </div>
 
                     {/* Bullet Points with Authentic Bullet Dots */}
-                    <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                    <ul className="space-y-2.5 text-xs leading-relaxed text-neutral-600 sm:text-sm dark:text-neutral-300">
                       {exp.bullets.map((bullet, bIdx) => (
                         <li key={bIdx} className="flex items-start gap-2.5">
-                          <span className="text-neutral-400 dark:text-neutral-600 select-none mt-0.5 text-sm leading-none">&bull;</span>
+                          <span className="mt-0.5 text-sm leading-none text-neutral-400 select-none dark:text-neutral-600">&bull;</span>
                           <span>{bullet}</span>
                         </li>
                       ))}
                     </ul>
 
                     {/* Tech Badges */}
-                    <div className="flex flex-wrap gap-1.5 pt-3 border-t border-neutral-200/60 dark:border-neutral-800/60">
+                    <div className="flex flex-wrap gap-1.5 border-t border-neutral-200/60 pt-3 dark:border-neutral-800/60">
                       {exp.tech.map((t, tIdx) => (
-                        <span
-                          key={tIdx}
-                          className="text-[11px] font-mono px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800/70 text-neutral-600 dark:text-neutral-400 font-medium"
-                        >
+                        <span key={tIdx} className="rounded bg-neutral-100 px-2 py-0.5 font-mono text-[11px] font-medium text-neutral-600 dark:bg-neutral-800/70 dark:text-neutral-400">
                           {t}
                         </span>
                       ))}
@@ -150,40 +133,28 @@ export default function Experience() {
           </div>
 
           {/* Right Column: Education, Certifications & Languages */}
-          <div className="lg:col-span-4 space-y-8">
+          <div className="space-y-8 lg:col-span-4">
             {/* Education Card */}
             <div>
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4">
-                Education
-              </h3>
-              <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 p-6 backdrop-blur-sm space-y-3">
-                <div className="flex items-baseline justify-between gap-2 text-xs font-mono text-neutral-500">
+              <h3 className="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Education</h3>
+              <div className="space-y-3 rounded-2xl border border-neutral-200 bg-neutral-50/50 p-6 backdrop-blur-sm dark:border-neutral-800 dark:bg-neutral-900/40">
+                <div className="flex items-baseline justify-between gap-2 font-mono text-xs text-neutral-500">
                   <span>{education.period}</span>
                   <span>{education.location}</span>
                 </div>
-                <h4 className="font-bold text-base text-neutral-900 dark:text-white leading-snug">
-                  {education.degree}
-                </h4>
-                <p className="text-xs text-neutral-600 dark:text-neutral-400 pt-3 border-t border-neutral-200/60 dark:border-neutral-800/60 leading-relaxed">
-                  {education.details}
-                </p>
+                <h4 className="text-base leading-snug font-bold text-neutral-900 dark:text-white">{education.degree}</h4>
+                <p className="border-t border-neutral-200/60 pt-3 text-xs leading-relaxed text-neutral-600 dark:border-neutral-800/60 dark:text-neutral-400">{education.details}</p>
               </div>
             </div>
 
             {/* Certifications Card */}
             <div>
-              <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4">
-                Certifications
-              </h3>
-              <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 p-6 backdrop-blur-sm divide-y divide-neutral-200/60 dark:divide-neutral-800/60">
+              <h3 className="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">Certifications</h3>
+              <div className="divide-y divide-neutral-200/60 rounded-2xl border border-neutral-200 bg-neutral-50/50 p-6 backdrop-blur-sm dark:divide-neutral-800/60 dark:border-neutral-800 dark:bg-neutral-900/40">
                 {certifications.map((cert, cIdx) => (
                   <div key={cIdx} className="py-2.5 first:pt-0 last:pb-0">
-                    <h5 className="font-semibold text-xs text-neutral-900 dark:text-neutral-200">
-                      {cert.name}
-                    </h5>
-                    <p className="text-[11px] text-neutral-500 mt-0.5">
-                      {cert.issuer}
-                    </p>
+                    <h5 className="text-xs font-semibold text-neutral-900 dark:text-neutral-200">{cert.name}</h5>
+                    <p className="mt-0.5 text-[11px] text-neutral-500">{cert.issuer}</p>
                   </div>
                 ))}
               </div>
