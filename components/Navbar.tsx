@@ -72,10 +72,6 @@ export default function Navbar() {
                 {theme === "dark" ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-neutral-700" />}
               </button>
             )}
-
-            <a href="/#contact" className="inline-flex items-center justify-center rounded-lg bg-teal-500 px-3.5 py-1.5 text-xs font-semibold text-neutral-950 transition-colors hover:bg-teal-400">
-              Contact
-            </a>
           </div>
 
           {/* Mobile Actions */}
@@ -131,9 +127,6 @@ export default function Navbar() {
                   <Mail className="h-4 w-4" />
                 </a>
               </div>
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="inline-flex items-center rounded-lg bg-teal-500 px-3 py-1.5 text-xs font-semibold text-neutral-950">
-                Contact
-              </a>
             </div>
           </div>
         )}
