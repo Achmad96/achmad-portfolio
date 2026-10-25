@@ -31,10 +31,10 @@ export default function LeetCodeCard() {
       });
   }, []);
 
-  const total = stats?.totalSolved || 61;
-  const easy = stats?.easySolved || 38;
-  const medium = stats?.mediumSolved || 22;
-  const hard = stats?.hardSolved || 1;
+  const total = stats?.totalSolved || 0;
+  const easy = stats?.easySolved || 0;
+  const medium = stats?.mediumSolved || 0;
+  const hard = stats?.hardSolved || 0;
   const username = stats?.username || "Achmad96";
   const profileUrl = stats?.profileUrl || `https://leetcode.com/u/${username}/`;
   const ranking = stats?.ranking ? stats.ranking.toLocaleString() : "2,440,715";
@@ -46,34 +46,24 @@ export default function LeetCodeCard() {
   return (
     <div>
       {/* Clean section header matching Education, Certifications & Languages */}
-      <h3 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4">
-        LeetCode
-      </h3>
+      <h3 className="mb-4 text-lg font-semibold text-neutral-900 dark:text-white">LeetCode</h3>
 
       {/* Understated Card */}
-      <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 p-6 backdrop-blur-sm space-y-4">
+      <div className="space-y-4 rounded-2xl border border-neutral-200 bg-neutral-50/50 p-6 backdrop-blur-sm dark:border-neutral-800 dark:bg-neutral-900/40">
         {/* Total Solved Overview */}
         <div className="flex items-baseline justify-between">
           <div>
-            <span className="text-xs font-mono text-neutral-500 uppercase tracking-wider block">
-              Problems Solved
-            </span>
-            <div className="text-2xl font-bold text-neutral-900 dark:text-white mt-0.5">
-              {total}
-            </div>
+            <span className="block font-mono text-xs tracking-wider text-neutral-500 uppercase">Problems Solved</span>
+            <div className="mt-0.5 text-2xl font-bold text-neutral-900 dark:text-white">{total}</div>
           </div>
           <div className="text-right">
-            <span className="text-xs font-mono text-neutral-500 uppercase tracking-wider block">
-              Global Rank
-            </span>
-            <span className="text-xs font-mono text-neutral-700 dark:text-neutral-300 font-medium">
-              #{ranking}
-            </span>
+            <span className="block font-mono text-xs tracking-wider text-neutral-500 uppercase">Global Rank</span>
+            <span className="font-mono text-xs font-medium text-neutral-700 dark:text-neutral-300">#{ranking}</span>
           </div>
         </div>
 
         {/* Minimal Segmented Ratio Bar */}
-        <div className="h-1.5 w-full rounded-full bg-neutral-200/80 dark:bg-neutral-800 overflow-hidden flex gap-0.5">
+        <div className="flex h-1.5 w-full gap-0.5 overflow-hidden rounded-full bg-neutral-200/80 dark:bg-neutral-800">
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: `${easyPercent}%` }}
@@ -102,34 +92,22 @@ export default function LeetCodeCard() {
 
         {/* Difficulty Breakdown Badges */}
         <div className="grid grid-cols-3 gap-2 pt-1 text-center font-mono">
-          <div className="py-2 px-1.5 rounded-lg bg-neutral-100/80 dark:bg-neutral-800/50">
-            <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">
-              Easy
-            </div>
-            <div className="text-sm font-bold text-neutral-900 dark:text-neutral-100 mt-0.5">
-              {easy}
-            </div>
+          <div className="rounded-lg bg-neutral-100/80 px-1.5 py-2 dark:bg-neutral-800/50">
+            <div className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400">Easy</div>
+            <div className="mt-0.5 text-sm font-bold text-neutral-900 dark:text-neutral-100">{easy}</div>
           </div>
-          <div className="py-2 px-1.5 rounded-lg bg-neutral-100/80 dark:bg-neutral-800/50">
-            <div className="text-[10px] text-amber-600 dark:text-amber-400 font-semibold">
-              Medium
-            </div>
-            <div className="text-sm font-bold text-neutral-900 dark:text-neutral-100 mt-0.5">
-              {medium}
-            </div>
+          <div className="rounded-lg bg-neutral-100/80 px-1.5 py-2 dark:bg-neutral-800/50">
+            <div className="text-[10px] font-semibold text-amber-600 dark:text-amber-400">Medium</div>
+            <div className="mt-0.5 text-sm font-bold text-neutral-900 dark:text-neutral-100">{medium}</div>
           </div>
-          <div className="py-2 px-1.5 rounded-lg bg-neutral-100/80 dark:bg-neutral-800/50">
-            <div className="text-[10px] text-rose-600 dark:text-rose-400 font-semibold">
-              Hard
-            </div>
-            <div className="text-sm font-bold text-neutral-900 dark:text-neutral-100 mt-0.5">
-              {hard}
-            </div>
+          <div className="rounded-lg bg-neutral-100/80 px-1.5 py-2 dark:bg-neutral-800/50">
+            <div className="text-[10px] font-semibold text-rose-600 dark:text-rose-400">Hard</div>
+            <div className="mt-0.5 text-sm font-bold text-neutral-900 dark:text-neutral-100">{hard}</div>
           </div>
         </div>
 
         {/* Footer Link to Profile */}
-        <div className="pt-3 border-t border-neutral-200/60 dark:border-neutral-800/60 flex items-center justify-between text-[11px] text-neutral-500">
+        <div className="flex items-center justify-between border-t border-neutral-200/60 pt-3 text-[11px] text-neutral-500 dark:border-neutral-800/60">
           <div className="flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
             <span>Algorithm &amp; Data Structures</span>
@@ -139,7 +117,7 @@ export default function LeetCodeCard() {
             href={profileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+            className="inline-flex items-center gap-1 text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
           >
             <span>@{username}</span>
             <ExternalLink className="h-3 w-3" />
@@ -149,4 +127,3 @@ export default function LeetCodeCard() {
     </div>
   );
 }
-
