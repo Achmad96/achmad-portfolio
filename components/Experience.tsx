@@ -8,7 +8,7 @@ export default function Experience() {
   const experiences = [
     {
       period: "January 2026 - May 2026",
-      role: "Technical Programmer",
+      role: "Technical Programmer Intern",
       company: "PT Jasa Web Indonesia (Webtocrat Motion Group)",
       location: "Surabaya, Indonesia",
       bullets: [
@@ -20,7 +20,7 @@ export default function Experience() {
     },
     {
       period: "January 2026 - April 2026",
-      role: "AI Engineer",
+      role: "AI Engineer Intern",
       company: "Captiveau",
       location: "Surabaya, Indonesia",
       bullets: [
