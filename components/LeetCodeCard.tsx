@@ -20,7 +20,7 @@ export default function LeetCodeCard() {
 
   useEffect(() => {
     const fetchLeetCode = () => {
-      fetch("/api/leetcode")
+      fetch("/api/leetcode", { cache: "no-store" })
         .then((res) => (res.ok ? res.json() : null))
         .then((json) => {
           if (json && json.success) {
@@ -35,11 +35,14 @@ export default function LeetCodeCard() {
     fetchLeetCode();
 
     // Revalidate every 5 minutes when tab is visible
-    const interval = setInterval(() => {
-      if (typeof document !== "undefined" && document.visibilityState === "visible") {
-        fetchLeetCode();
-      }
-    }, 5 * 60 * 1000);
+    const interval = setInterval(
+      () => {
+        if (typeof document !== "undefined" && document.visibilityState === "visible") {
+          fetchLeetCode();
+        }
+      },
+      5 * 60 * 1000,
+    );
 
     return () => clearInterval(interval);
   }, []);
@@ -48,9 +51,9 @@ export default function LeetCodeCard() {
   const easy = stats?.easySolved || 0;
   const medium = stats?.mediumSolved || 0;
   const hard = stats?.hardSolved || 0;
-  const username = stats?.username || "Achmad96";
+  const username = stats?.username || "achmad-raihan";
   const profileUrl = stats?.profileUrl || `https://leetcode.com/u/${username}/`;
-  const ranking = stats?.ranking ? stats.ranking.toLocaleString() : "2,440,715";
+  const ranking = stats?.ranking ? stats.ranking.toLocaleString() : "-";
 
   const easyPercent = total > 0 ? (easy / total) * 100 : 0;
   const mediumPercent = total > 0 ? (medium / total) * 100 : 0;
@@ -79,24 +82,21 @@ export default function LeetCodeCard() {
         <div className="flex h-1.5 w-full gap-0.5 overflow-hidden rounded-full bg-neutral-200/80 dark:bg-neutral-800">
           <motion.div
             initial={{ width: 0 }}
-            whileInView={{ width: `${easyPercent}%` }}
-            viewport={{ once: true }}
+            animate={{ width: `${easyPercent}%` }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="h-full bg-emerald-500"
             title={`Easy: ${easy}`}
           />
           <motion.div
             initial={{ width: 0 }}
-            whileInView={{ width: `${mediumPercent}%` }}
-            viewport={{ once: true }}
+            animate={{ width: `${mediumPercent}%` }}
             transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
             className="h-full bg-amber-500"
             title={`Medium: ${medium}`}
           />
           <motion.div
             initial={{ width: 0 }}
-            whileInView={{ width: `${hardPercent}%` }}
-            viewport={{ once: true }}
+            animate={{ width: `${hardPercent}%` }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="h-full bg-rose-500"
             title={`Hard: ${hard}`}

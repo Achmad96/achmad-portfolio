@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const revalidate = 300;
+export const revalidate = 60;
 
 export async function GET() {
   const username = process.env.LEETCODE_USERNAME || "achmad-raihan";
@@ -33,6 +33,12 @@ export async function GET() {
               count
             }
           }
+          submitStatsGlobal {
+            acSubmissionNum {
+              difficulty
+              count
+            }
+          }
         }
       }
     `;
@@ -49,8 +55,7 @@ export async function GET() {
         query,
         variables: { username },
       }),
-      cache: "force-cache",
-      next: { revalidate: 300 }, // Cache and revalidate every 5 minutes
+      next: { revalidate: 60 },
     });
 
     if (!res.ok) {
@@ -77,16 +82,19 @@ export async function GET() {
     }
 
     const acSubmissions: Array<{ difficulty: string; count: number }> =
-      matchedUser?.submitStats?.acSubmissionNum || [];
+      matchedUser?.submitStatsGlobal?.acSubmissionNum ||
+      matchedUser?.submitStats?.acSubmissionNum ||
+      [];
 
-    const totalSolved =
-      acSubmissions.find((s) => s.difficulty === "All")?.count ?? 0;
-    const easySolved =
-      acSubmissions.find((s) => s.difficulty === "Easy")?.count ?? 0;
-    const mediumSolved =
-      acSubmissions.find((s) => s.difficulty === "Medium")?.count ?? 0;
-    const hardSolved =
-      acSubmissions.find((s) => s.difficulty === "Hard")?.count ?? 0;
+    const findCount = (diff: string) =>
+      acSubmissions.find(
+        (s) => s.difficulty?.toLowerCase() === diff.toLowerCase()
+      )?.count ?? 0;
+
+    const totalSolved = findCount("All");
+    const easySolved = findCount("Easy");
+    const mediumSolved = findCount("Medium");
+    const hardSolved = findCount("Hard");
 
     return NextResponse.json(
       {
@@ -105,7 +113,7 @@ export async function GET() {
       {
         headers: {
           "Cache-Control":
-            "public, max-age=300, s-maxage=300, stale-while-revalidate=600",
+            "public, max-age=60, s-maxage=60, stale-while-revalidate=120",
         },
       }
     );

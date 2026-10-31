@@ -14,12 +14,29 @@ export type ProjectType = {
   githubUrl?: string;
   featured: boolean;
   isML?: boolean;
+  isHighlighted?: boolean;
+  difficulty?: "High Complexity" | "Intermediate" | "Standard";
 };
 
 export const PROJECTS_METADATA: ProjectType[] = [
   {
+    id: "jimamet-nutrition",
+    title: "Jimamet",
+    description:
+      "An intelligent multi-modal clinical nutrition platform pairing real-time computer vision with conversational LLM guidance. Features an Ultralytics YOLOv8 food detection model inferencing on live camera video streams, Google Gemini 2.5 Flash for context-aware clinical NutriCoach dietary recommendations, and a decoupled Django REST / Daphne ASGI backend with Supabase PostgreSQL and Next.js frontend.",
+    highlight: "Real-time YOLOv8 food vision inference, context-aware Gemini 2.5 Flash NutriCoach & ASGI architecture.",
+    tech: ["Ultralytics YOLOv8", "Google Gemini 2.5", "Next.js", "Django REST", "Daphne (ASGI)", "Supabase", "TypeScript"],
+    category: "ai",
+    categoryLabel: "Machine Learning & AI",
+    githubUrl: "https://github.com/Achmad96/jimamet",
+    featured: true,
+    isML: true,
+    isHighlighted: true,
+    difficulty: "High Complexity",
+  },
+  {
     id: "synthetic-fraud-detection",
-    title: "Synthetic Financial Transaction Generation & Fraud Anomaly Detection",
+    title: "Synthetic Fraud Detection",
     company: "Webtocrat",
     description:
       "An end-to-end deep learning pipeline for financial fraud detection addressing severe class imbalance. Leveraged Nvidia NeMo Data Designer to synthesize realistic tabular transaction distributions, and trained deep neural anomaly detection classifiers achieving 98% accuracy on held-out inference datasets through supervised learning, custom loss optimization, and feature importance analysis.",
@@ -30,10 +47,12 @@ export const PROJECTS_METADATA: ProjectType[] = [
     githubUrl: "https://github.com/Achmad96/synthetic-fraud-detection-dataset",
     featured: true,
     isML: true,
+    isHighlighted: true,
+    difficulty: "High Complexity",
   },
   {
     id: "captiveau-ai-match-analysis",
-    title: "Real-Time Computer Vision Match Tracking & Spatial Analytics",
+    title: "Captiveau Match Analysis",
     company: "Captiveau",
     description:
       "A computer vision sports analytics pipeline tracking multi-agent player trajectories and ball kinematics from single-angle broadcast footage. Achieved 85% multi-object tracking accuracy on real-world clips, extracted continuous 2D on-field spatial coordinate telemetry, reduced manual game tagging time by 30%, and computed automated tactical summaries with sub-5-second processing latency.",
@@ -43,10 +62,74 @@ export const PROJECTS_METADATA: ProjectType[] = [
     categoryLabel: "Machine Learning & AI",
     featured: true,
     isML: true,
+    isHighlighted: true,
+    difficulty: "High Complexity",
+  },
+  {
+    id: "aerostride",
+    title: "AeroStride",
+    description:
+      "An offline-native endurance training and running platform built for athletes who demand data sovereignty. Features a high-precision background GPS engine with Android foreground services and WAKE_LOCK, 5-second atomic SQLite crash recovery, Haversine velocity smoothing, real-time IQAir environmental air quality intelligence, and dynamic algorithmic training plans.",
+    highlight: "Offline-first background GPS engine, 5-second atomic SQLite crash resilience & algorithmic training.",
+    tech: ["React Native", "Expo SDK", "TypeScript", "SQLite", "Background Geolocation", "State Machine"],
+    category: "systems",
+    categoryLabel: "Mobile & Systems",
+    githubUrl: "https://github.com/Achmad96/AeroStride",
+    featured: true,
+    isHighlighted: true,
+    difficulty: "High Complexity",
+  },
+  {
+    id: "nongki",
+    title: "Nongki",
+    description:
+      "A production-grade workspace booking platform engineered to eliminate race conditions and double-bookings. Architected with Spring Boot 3 and React 19, incorporating deterministic lexicographical PESSIMISTIC_WRITE row locks to prevent database deadlocks, distributed idempotency verification via Idempotency-Key headers, asymmetric RS256 JWT auth, and interactive coordinate floor map visualization.",
+    highlight: "Deadlock-free pessimistic locking, distributed idempotency & asymmetric RSA JWT auth.",
+    tech: ["Spring Boot 3", "Java 17", "React 19", "MySQL 8", "Pessimistic Locking", "Idempotency", "RSA JWT"],
+    category: "web",
+    categoryLabel: "Full-Stack Web",
+    githubUrl: "https://github.com/Achmad96/nongki",
+    featured: true,
+    isHighlighted: true,
+    difficulty: "High Complexity",
+  },
+  {
+    id: "driver-drowsiness-detection",
+    title: "Driver Drowsiness Detection",
+    description:
+      "An edge computer vision safety system utilizing Ultralytics YOLOv11 for low-latency facial landmark and fatigue pattern detection. Monitors eye aspect ratios, closure durations, and yawning frequencies in video streams, executing instant heuristic alerting to preempt hazardous driving conditions.",
+    highlight: "Ultralytics YOLOv11 deep learning model for real-time facial fatigue tracking and accident prevention.",
+    tech: ["Python", "YOLOv11", "PyTorch", "Computer Vision", "OpenCV", "Deep Learning"],
+    category: "ai",
+    categoryLabel: "Machine Learning & AI",
+    githubUrl: "https://github.com/Achmad96/DRIVER-DROWSINESS-DETECTION-YOLOV11",
+    featured: true,
+    isML: true,
+    isHighlighted: true,
+    difficulty: "High Complexity",
+  },
+
+  // ==========================================
+  // ADDITIONAL PROJECTS (Full Portfolio Archive)
+  // Accessible via pagination and category filters
+  // ==========================================
+  {
+    id: "pemutu",
+    title: "PEMUTU",
+    description:
+      "An institutional governance web platform centralizing academic quality assurance workflows, internal audits, evidence collection, accreditation instruments, and stakeholder satisfaction surveys.",
+    highlight: "Centralized higher education QA, internal audit workflows, and accreditation management.",
+    tech: ["PHP", "CodeIgniter", "PostgreSQL", "Database Architecture"],
+    category: "web",
+    categoryLabel: "Full-Stack Web",
+    githubUrl: "https://github.com/Achmad96/pemutu",
+    featured: false,
+    isHighlighted: false,
+    difficulty: "Intermediate",
   },
   {
     id: "toddler-nutrition-analysis",
-    title: "Pediatric Stunting Risk & Nutrition Predictive Analytics",
+    title: "Toddler Nutrition Analysis",
     description:
       "An applied machine learning and health informatics application for pediatric growth assessment and early stunting risk detection. Developed classification algorithms and statistical regression models benchmarked against World Health Organization (WHO) Anthro growth standards, automating z-score computation, risk stratification, and visual nutrition trend analysis.",
     highlight: "Supervised growth metric classification, WHO z-score modeling & interactive clinical risk analytics.",
@@ -55,12 +138,14 @@ export const PROJECTS_METADATA: ProjectType[] = [
     categoryLabel: "Machine Learning & AI",
     url: "https://toddler-nutrition-analysis.streamlit.app/",
     githubUrl: "https://github.com/Achmad96/toddler-nutrition-analysis",
-    featured: true,
+    featured: false,
     isML: true,
+    isHighlighted: false,
+    difficulty: "Intermediate",
   },
   {
     id: "umkm-desa-keduyung",
-    title: "UMKM Desa Keduyung Marketplace",
+    title: "UMKM Desa Keduyung",
     description:
       "A digital commerce and product showcase platform built to empower micro, small, and medium village enterprises (UMKM) in Desa Keduyung, expanding their distribution reach and catalog visibility.",
     highlight: "Full-stack marketplace empowering village entrepreneurs with online commerce.",
@@ -69,11 +154,13 @@ export const PROJECTS_METADATA: ProjectType[] = [
     categoryLabel: "Full-Stack Web",
     url: "https://keduyung.vercel.app",
     githubUrl: "https://github.com/Achmad96/umkm-desa-keduyung",
-    featured: true,
+    featured: false,
+    isHighlighted: false,
+    difficulty: "Standard",
   },
   {
     id: "smart-sumbermalang",
-    title: "Sumbermalang SMART Governance",
+    title: "Sumbermalang SMART",
     description:
       "An integrated smart village administration portal streamlining administrative workflows, resident services, village announcements, and transparent public information management.",
     highlight: "Integrated public administration and citizen service workflow platform.",
@@ -82,11 +169,13 @@ export const PROJECTS_METADATA: ProjectType[] = [
     categoryLabel: "Public & Community",
     url: "https://sumbermalang-smart.vercel.app/",
     githubUrl: "https://github.com/Achmad96/smart",
-    featured: true,
+    featured: false,
+    isHighlighted: false,
+    difficulty: "Standard",
   },
   {
     id: "inventory-managements",
-    title: "Full-Stack Inventory & Supply Platform",
+    title: "Inventory Managements",
     description:
       "End-to-end warehouse stock control dashboard with relational queries optimized for high-volume datasets, supplier management, and automated stock reorder triggers.",
     highlight: "Production stock management dashboard with Express REST APIs and React.",
@@ -94,11 +183,13 @@ export const PROJECTS_METADATA: ProjectType[] = [
     category: "web",
     categoryLabel: "Full-Stack Web",
     githubUrl: "https://github.com/Achmad96/inventory-managements",
-    featured: true,
+    featured: false,
+    isHighlighted: false,
+    difficulty: "Standard",
   },
   {
     id: "himaprosif-portal",
-    title: "HIMAPROSIF Official Platform",
+    title: "HIMAPROSIF",
     description:
       "Official academic organization web portal for Himpunan Mahasiswa Program Studi Sistem Informasi, managing department portfolios, announcements, and student activities.",
     highlight: "Official student association digital portal serving the Information Systems department.",
@@ -108,10 +199,12 @@ export const PROJECTS_METADATA: ProjectType[] = [
     url: "https://himaprosif.vercel.app",
     githubUrl: "https://github.com/Achmad96/himaprosif",
     featured: false,
+    isHighlighted: false,
+    difficulty: "Standard",
   },
   {
     id: "spotimad",
-    title: "Spotimad Music Player Web Client",
+    title: "Spotimad",
     description:
       "A responsive music streaming web client featuring audio playback controls, persistent playback state, playlist exploration, and dynamic album artwork handling.",
     highlight: "Audio streaming interface with responsive playback controls.",
@@ -121,10 +214,12 @@ export const PROJECTS_METADATA: ProjectType[] = [
     url: "https://spotimad.vercel.app",
     githubUrl: "https://github.com/Achmad96/Spotimad",
     featured: false,
+    isHighlighted: false,
+    difficulty: "Standard",
   },
   {
     id: "remaja-masjid",
-    title: "Remaja Masjid Nurul Huda Hub",
+    title: "Remaja Masjid Nurul Huda",
     description:
       "A community portal for youth mosque organization, featuring prayer schedules, activity calendar, announcement board, and member coordination.",
     highlight: "Community management platform with prayer schedules and activity planning.",
@@ -134,10 +229,12 @@ export const PROJECTS_METADATA: ProjectType[] = [
     url: "https://remas-nh.vercel.app",
     githubUrl: "https://github.com/Achmad96/remaja-masjid-website",
     featured: false,
+    isHighlighted: false,
+    difficulty: "Standard",
   },
   {
     id: "geotera",
-    title: "Geotera Engineering Consulting",
+    title: "Geotera",
     description:
       "Corporate web platform for Geotera engineering and surveying services, presenting corporate portfolio, service catalogs, and client consultation workflows.",
     highlight: "Engineering consultancy web presence showcasing industrial surveying.",
@@ -145,12 +242,14 @@ export const PROJECTS_METADATA: ProjectType[] = [
     category: "web",
     categoryLabel: "Full-Stack Web",
     url: "https://geotera.vercel.app",
-    githubUrl: "https://github.com/Achmad96/geotera-website",
+    githubUrl: "https://github.com/Achmad96/geotera",
     featured: false,
+    isHighlighted: false,
+    difficulty: "Standard",
   },
   {
     id: "madchat",
-    title: "MadChat Real-Time Messaging",
+    title: "MadChat",
     description:
       "Low-latency instant messaging application with bi-directional WebSocket communication, channel rooms, live typing cues, and user status indicators.",
     highlight: "Real-time communication platform powered by WebSockets and TypeScript.",
@@ -159,17 +258,21 @@ export const PROJECTS_METADATA: ProjectType[] = [
     categoryLabel: "Full-Stack Web",
     githubUrl: "https://github.com/Achmad96/madchat",
     featured: false,
+    isHighlighted: false,
+    difficulty: "Intermediate",
   },
   {
     id: "puskesmas",
-    title: "Puskesmas Clinical Information System",
+    title: "Puskesmas",
     description:
       "Desktop electronic health record (EHR) and clinic management application facilitating patient triage, medical consultations, and medicine inventory administration.",
     highlight: "Desktop healthcare administration software built with Java and SQL.",
     tech: ["Java", "JavaFX", "Object-Oriented Design", "SQL"],
     category: "systems",
-    categoryLabel: "Desktop & Systems",
+    categoryLabel: "Mobile & Systems",
     githubUrl: "https://github.com/Achmad96/puskesmas-new",
     featured: false,
+    isHighlighted: false,
+    difficulty: "Intermediate",
   },
 ];

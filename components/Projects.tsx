@@ -15,7 +15,7 @@ export default function Projects() {
     { id: "ai", label: "Machine Learning & AI" },
     { id: "web", label: "Full-Stack Web" },
     { id: "community", label: "Public & Community" },
-    { id: "systems", label: "Desktop & Systems" },
+    { id: "systems", label: "Mobile & Systems" },
   ];
 
   const filteredProjects = PROJECTS_METADATA.filter((project) => {
@@ -84,17 +84,24 @@ export default function Projects() {
             <div
               key={project.id}
               className={`group rounded-2xl border transition-all p-6 sm:p-7 flex flex-col justify-between ${
-                project.isML
+                project.isHighlighted
                   ? "border-teal-500/40 dark:border-teal-500/30 bg-teal-500/[0.02] dark:bg-teal-500/[0.04] shadow-xs hover:border-teal-500/70 dark:hover:border-teal-400/60 ring-1 ring-teal-500/10"
                   : "border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 hover:border-neutral-300 dark:hover:border-neutral-700"
               }`}
             >
               <div className="space-y-3.5">
-                {/* Header: Consistent Category (Top-Left) & Company (Top-Right) */}
+                {/* Header: Category & Difficulty Badge (Top-Left) & Company (Top-Right) */}
                 <div className="flex items-center justify-between gap-3 text-xs">
-                  <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 font-medium">
-                    {project.categoryLabel}
-                  </span>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 font-medium">
+                      {project.categoryLabel}
+                    </span>
+                    {project.isHighlighted && (
+                      <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20 font-medium">
+                        High Complexity
+                      </span>
+                    )}
+                  </div>
                   {project.company && (
                     <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 shrink-0">
                       {project.company}

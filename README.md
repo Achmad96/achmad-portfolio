@@ -31,7 +31,7 @@ Designed with a clean, minimalist aesthetic inspired by modern design portfolios
 
 - **Curated Projects Showcase**:
 
-  - Multi-category filter: _All Projects_, _Machine Learning & AI_, _Full-Stack Web_, _Public & Community_, and _Desktop & Systems_.
+  - Multi-category filter: _All Projects_, _Machine Learning & AI_, _Full-Stack Web_, _Public & Community_, and _Mobile & Systems_.
   - Direct repository links and proprietary project designations.
   - Features real systems including Nvidia NeMo fraud anomaly architectures, real-time match vision tracking, **UMKM Desa Keduyung**, and **Sumbermalang SMART**.
 
