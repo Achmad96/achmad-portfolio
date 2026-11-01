@@ -12,8 +12,8 @@ export default function Projects() {
 
   const categories = [
     { id: "all", label: "All Projects" },
-    { id: "ai", label: "Machine Learning & AI" },
-    { id: "web", label: "Full-Stack Web" },
+    { id: "ai", label: "Artificial Intelligence" },
+    { id: "web", label: "Full-Stack Website" },
     { id: "community", label: "Public & Community" },
     { id: "systems", label: "Mobile & Systems" },
   ];
@@ -24,10 +24,7 @@ export default function Projects() {
 
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
 
-  const paginatedProjects = filteredProjects.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
+  const paginatedProjects = filteredProjects.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   const handleCategoryChange = (cat: ProjectCategory) => {
     setSelectedCategory(cat);
@@ -43,34 +40,27 @@ export default function Projects() {
   };
 
   return (
-    <section
-      id="projects"
-      className="py-24 relative overflow-hidden bg-white dark:bg-neutral-950 border-t border-neutral-200 dark:border-neutral-900 transition-colors"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="relative overflow-hidden border-t border-neutral-200 bg-white py-24 transition-colors dark:border-neutral-900 dark:bg-neutral-950">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="flex flex-col items-start mb-10 space-y-2">
-          <span className="text-xs font-mono tracking-wider text-teal-600 dark:text-teal-400 uppercase font-semibold">
-            Machine Learning &amp; Engineering Showcase
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-neutral-900 dark:text-white tracking-tight">
-            Featured Projects
-          </h2>
-          <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl text-sm sm:text-base">
+        <div className="mb-10 flex flex-col items-start space-y-2">
+          <span className="font-mono text-xs font-semibold tracking-wider text-teal-600 uppercase dark:text-teal-400">Machine Learning &amp; Engineering Showcase</span>
+          <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">Featured Projects</h2>
+          <p className="max-w-2xl text-sm text-neutral-600 sm:text-base dark:text-neutral-400">
             Machine learning architectures, computer vision pipelines, and intelligent systems developed as an aspiring ML engineer.
           </p>
         </div>
 
         {/* Filter Controls */}
-        <div className="flex flex-wrap items-center gap-1.5 mb-10 pb-4 border-b border-neutral-200 dark:border-neutral-800">
+        <div className="mb-10 flex flex-wrap items-center gap-1.5 border-b border-neutral-200 pb-4 dark:border-neutral-800">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => handleCategoryChange(cat.id as ProjectCategory)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+              className={`cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
                 selectedCategory === cat.id
-                  ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 shadow-xs font-semibold"
-                  : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900"
+                  ? "bg-neutral-900 font-semibold text-white shadow-xs dark:bg-white dark:text-neutral-900"
+                  : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-950 dark:text-neutral-400 dark:hover:bg-neutral-900 dark:hover:text-white"
               }`}
             >
               {cat.label}
@@ -79,47 +69,29 @@ export default function Projects() {
         </div>
 
         {/* Projects Grid (6 items per page) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {paginatedProjects.map((project) => (
             <div
               key={project.id}
-              className={`group rounded-2xl border transition-all p-6 sm:p-7 flex flex-col justify-between ${
+              className={`group flex flex-col justify-between rounded-2xl border p-6 transition-all sm:p-7 ${
                 project.isHighlighted
-                  ? "border-teal-500/40 dark:border-teal-500/30 bg-teal-500/[0.02] dark:bg-teal-500/[0.04] shadow-xs hover:border-teal-500/70 dark:hover:border-teal-400/60 ring-1 ring-teal-500/10"
-                  : "border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 hover:border-neutral-300 dark:hover:border-neutral-700"
+                  ? "border-teal-500/40 bg-teal-500/[0.02] shadow-xs ring-1 ring-teal-500/10 hover:border-teal-500/70 dark:border-teal-500/30 dark:bg-teal-500/[0.04] dark:hover:border-teal-400/60"
+                  : "border-neutral-200 bg-neutral-50/50 hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900/40 dark:hover:border-neutral-700"
               }`}
             >
               <div className="space-y-3.5">
-                {/* Header: Category & Difficulty Badge (Top-Left) & Company (Top-Right) */}
+                {/* Header: Category & Company */}
                 <div className="flex items-center justify-between gap-3 text-xs">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-mono text-xs text-neutral-500 dark:text-neutral-400 font-medium">
-                      {project.categoryLabel}
-                    </span>
-                    {project.isHighlighted && (
-                      <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/20 font-medium">
-                        High Complexity
-                      </span>
-                    )}
-                  </div>
-                  {project.company && (
-                    <span className="text-[11px] font-medium text-neutral-500 dark:text-neutral-400 shrink-0">
-                      {project.company}
-                    </span>
-                  )}
+                  <span className="font-mono text-xs font-medium text-neutral-500 dark:text-neutral-400">{project.categoryLabel}</span>
+                  {project.company && <span className="shrink-0 text-[11px] font-medium text-neutral-500 dark:text-neutral-400">{project.company}</span>}
                 </div>
 
                 {/* Title */}
-                <h3 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-white leading-snug tracking-tight">
+                <h3 className="text-base leading-snug font-bold tracking-tight text-neutral-900 sm:text-lg dark:text-white">
                   {project.url ? (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-teal-600 dark:hover:text-teal-400 transition-colors inline-flex items-center gap-1.5"
-                    >
+                    <a href={project.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 transition-colors hover:text-teal-600 dark:hover:text-teal-400">
                       <span>{project.title}</span>
-                      <ExternalLink className="h-3.5 w-3.5 opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
+                      <ExternalLink className="h-3.5 w-3.5 opacity-60 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
                     </a>
                   ) : (
                     <span>{project.title}</span>
@@ -127,17 +99,12 @@ export default function Projects() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                  {project.description}
-                </p>
+                <p className="text-xs leading-relaxed text-neutral-600 sm:text-sm dark:text-neutral-400">{project.description}</p>
 
                 {/* Tech Badges */}
                 <div className="flex flex-wrap gap-1.5 pt-2">
                   {project.tech.map((t, i) => (
-                    <span
-                      key={i}
-                      className="text-[11px] font-mono px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800/70 text-neutral-600 dark:text-neutral-400 font-medium"
-                    >
+                    <span key={i} className="rounded bg-neutral-100 px-2 py-0.5 font-mono text-[11px] font-medium text-neutral-600 dark:bg-neutral-800/70 dark:text-neutral-400">
                       {t}
                     </span>
                   ))}
@@ -145,21 +112,19 @@ export default function Projects() {
               </div>
 
               {/* Action Links */}
-              <div className="pt-4 mt-5 border-t border-neutral-200/60 dark:border-neutral-800/60 flex items-center justify-between gap-3 text-xs">
+              <div className="mt-5 flex items-center justify-between gap-3 border-t border-neutral-200/60 pt-4 text-xs dark:border-neutral-800/60">
                 {project.githubUrl ? (
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                    className="inline-flex items-center gap-1.5 text-neutral-600 transition-colors hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
                   >
                     <Github className="h-3.5 w-3.5" />
                     <span>Source Code</span>
                   </a>
                 ) : (
-                  <span className="text-[11px] text-neutral-400 dark:text-neutral-500">
-                    Proprietary / Industry project
-                  </span>
+                  <span className="text-[11px] text-neutral-400 dark:text-neutral-500">Proprietary / Industry project</span>
                 )}
 
                 {project.url && (
@@ -167,7 +132,7 @@ export default function Projects() {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-medium text-teal-600 dark:text-teal-400 hover:underline transition-colors"
+                    className="inline-flex items-center gap-1 font-medium text-teal-600 transition-colors hover:underline dark:text-teal-400"
                   >
                     <span>Live Demo</span>
                     <ExternalLink className="h-3 w-3" />
@@ -180,11 +145,9 @@ export default function Projects() {
 
         {/* Pagination Controls */}
         {totalPages > 1 && (
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 mt-8 border-t border-neutral-200/60 dark:border-neutral-800/60">
-            <span className="text-xs font-mono text-neutral-500">
-              Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–
-              {Math.min(currentPage * ITEMS_PER_PAGE, filteredProjects.length)} of{" "}
-              {filteredProjects.length} projects
+          <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-neutral-200/60 pt-8 sm:flex-row dark:border-neutral-800/60">
+            <span className="font-mono text-xs text-neutral-500">
+              Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1}–{Math.min(currentPage * ITEMS_PER_PAGE, filteredProjects.length)} of {filteredProjects.length} projects
             </span>
 
             <div className="flex items-center gap-1.5">
@@ -192,7 +155,7 @@ export default function Projects() {
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
                 aria-label="Previous Page"
-                className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="flex cursor-pointer items-center gap-1 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-30 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800"
               >
                 <ChevronLeft className="h-3.5 w-3.5" />
                 <span className="hidden sm:inline">Prev</span>
@@ -202,10 +165,10 @@ export default function Projects() {
                 <button
                   key={page}
                   onClick={() => handlePageChange(page)}
-                  className={`min-w-[32px] h-8 px-2.5 rounded-lg text-xs font-mono font-medium transition-colors cursor-pointer ${
+                  className={`h-8 min-w-[32px] cursor-pointer rounded-lg px-2.5 font-mono text-xs font-medium transition-colors ${
                     currentPage === page
-                      ? "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-semibold shadow-xs"
-                      : "border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                      ? "bg-neutral-900 font-semibold text-white shadow-xs dark:bg-white dark:text-neutral-900"
+                      : "border border-neutral-200 bg-white text-neutral-700 hover:bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800"
                   }`}
                 >
                   {page}
@@ -216,7 +179,7 @@ export default function Projects() {
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
                 aria-label="Next Page"
-                className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:opacity-30 disabled:cursor-not-allowed transition-colors cursor-pointer"
+                className="flex cursor-pointer items-center gap-1 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700 transition-colors hover:bg-neutral-100 disabled:cursor-not-allowed disabled:opacity-30 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800"
               >
                 <span className="hidden sm:inline">Next</span>
                 <ChevronRight className="h-3.5 w-3.5" />
@@ -226,20 +189,16 @@ export default function Projects() {
         )}
 
         {/* GitHub Repositories Banner */}
-        <div className="mt-12 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 p-6 sm:p-7 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 flex flex-col items-center justify-between gap-4 rounded-2xl border border-neutral-200 bg-neutral-50/50 p-6 sm:flex-row sm:p-7 dark:border-neutral-800 dark:bg-neutral-900/40">
           <div className="space-y-1 text-center sm:text-left">
-            <h4 className="text-sm font-semibold text-neutral-900 dark:text-white">
-              Explore More Repositories on GitHub
-            </h4>
-            <p className="text-xs text-neutral-600 dark:text-neutral-400">
-              Browse additional tools, algorithm implementations, and open-source contributions.
-            </p>
+            <h4 className="text-sm font-semibold text-neutral-900 dark:text-white">Explore More Repositories on GitHub</h4>
+            <p className="text-xs text-neutral-600 dark:text-neutral-400">Browse additional tools, algorithm implementations, and open-source contributions.</p>
           </div>
           <a
             href="https://github.com/Achmad96?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200 px-4 py-2 text-xs font-semibold transition-colors shrink-0 cursor-pointer shadow-xs"
+            className="inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-lg bg-neutral-900 px-4 py-2 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200"
           >
             <Github className="h-4 w-4" />
             <span>View All Repositories</span>

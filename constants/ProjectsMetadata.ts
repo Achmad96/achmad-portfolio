@@ -15,7 +15,6 @@ export type ProjectType = {
   featured: boolean;
   isML?: boolean;
   isHighlighted?: boolean;
-  difficulty?: "High Complexity" | "Intermediate" | "Standard";
 };
 
 export const PROJECTS_METADATA: ProjectType[] = [
@@ -23,16 +22,15 @@ export const PROJECTS_METADATA: ProjectType[] = [
     id: "jimamet-nutrition",
     title: "Jimamet",
     description:
-      "An intelligent multi-modal clinical nutrition platform pairing real-time computer vision with conversational LLM guidance. Features an Ultralytics YOLOv8 food detection model inferencing on live camera video streams, Google Gemini 2.5 Flash for context-aware clinical NutriCoach dietary recommendations, and a decoupled Django REST / Daphne ASGI backend with Supabase PostgreSQL and Next.js frontend.",
+      "An intelligent multi-modal clinical nutrition platform pairing real-time computer vision with conversational LLM guidance. Features an Ultralytics YOLOv12 food detection model inferencing on live camera video streams, Google Gemini 2.5 Flash for context-aware clinical NutriCoach dietary recommendations, and a decoupled Django REST / Daphne ASGI backend with Supabase PostgreSQL and Next.js frontend.",
     highlight: "Real-time YOLOv8 food vision inference, context-aware Gemini 2.5 Flash NutriCoach & ASGI architecture.",
-    tech: ["Ultralytics YOLOv8", "Google Gemini 2.5", "Next.js", "Django REST", "Daphne (ASGI)", "Supabase", "TypeScript"],
+    tech: ["YOLOv12", "Google Gemini 2.5", "Next.js", "Django REST", "Daphne (ASGI)", "Supabase", "TypeScript"],
     category: "ai",
-    categoryLabel: "Machine Learning & AI",
+    categoryLabel: "Artificial Intelligence",
     githubUrl: "https://github.com/Achmad96/jimamet",
     featured: true,
     isML: true,
     isHighlighted: true,
-    difficulty: "High Complexity",
   },
   {
     id: "synthetic-fraud-detection",
@@ -43,12 +41,11 @@ export const PROJECTS_METADATA: ProjectType[] = [
     highlight: "Nvidia NeMo synthetic tabular data generation & 98% accuracy deep learning anomaly classifier.",
     tech: ["Python", "PyTorch", "Nvidia NeMo", "Scikit-Learn", "Deep Learning", "Anomaly Detection"],
     category: "ai",
-    categoryLabel: "Machine Learning & AI",
+    categoryLabel: "Artificial Intelligence",
     githubUrl: "https://github.com/Achmad96/synthetic-fraud-detection-dataset",
     featured: true,
     isML: true,
     isHighlighted: true,
-    difficulty: "High Complexity",
   },
   {
     id: "captiveau-ai-match-analysis",
@@ -59,11 +56,10 @@ export const PROJECTS_METADATA: ProjectType[] = [
     highlight: "Real-time multi-object computer vision tracking (85% accuracy), spatial trajectory mapping & automated event extraction.",
     tech: ["Python", "Computer Vision", "OpenCV", "Deep Learning", "Object Tracking", "Spatial Analytics"],
     category: "ai",
-    categoryLabel: "Machine Learning & AI",
+    categoryLabel: "Artificial Intelligence",
     featured: true,
     isML: true,
     isHighlighted: true,
-    difficulty: "High Complexity",
   },
   {
     id: "aerostride",
@@ -77,7 +73,6 @@ export const PROJECTS_METADATA: ProjectType[] = [
     githubUrl: "https://github.com/Achmad96/AeroStride",
     featured: true,
     isHighlighted: true,
-    difficulty: "High Complexity",
   },
   {
     id: "nongki",
@@ -85,13 +80,12 @@ export const PROJECTS_METADATA: ProjectType[] = [
     description:
       "A production-grade workspace booking platform engineered to eliminate race conditions and double-bookings. Architected with Spring Boot 3 and React 19, incorporating deterministic lexicographical PESSIMISTIC_WRITE row locks to prevent database deadlocks, distributed idempotency verification via Idempotency-Key headers, asymmetric RS256 JWT auth, and interactive coordinate floor map visualization.",
     highlight: "Deadlock-free pessimistic locking, distributed idempotency & asymmetric RSA JWT auth.",
-    tech: ["Spring Boot 3", "Java 17", "React 19", "MySQL 8", "Pessimistic Locking", "Idempotency", "RSA JWT"],
+    tech: ["Spring Boot 3", "Java 17", "React 19", "MySQL 8", "RSA JWT"],
     category: "web",
-    categoryLabel: "Full-Stack Web",
+    categoryLabel: "Full-Stack Website",
     githubUrl: "https://github.com/Achmad96/nongki",
     featured: true,
     isHighlighted: true,
-    difficulty: "High Complexity",
   },
   {
     id: "driver-drowsiness-detection",
@@ -101,18 +95,12 @@ export const PROJECTS_METADATA: ProjectType[] = [
     highlight: "Ultralytics YOLOv11 deep learning model for real-time facial fatigue tracking and accident prevention.",
     tech: ["Python", "YOLOv11", "PyTorch", "Computer Vision", "OpenCV", "Deep Learning"],
     category: "ai",
-    categoryLabel: "Machine Learning & AI",
+    categoryLabel: "Artificial Intelligence",
     githubUrl: "https://github.com/Achmad96/DRIVER-DROWSINESS-DETECTION-YOLOV11",
     featured: true,
     isML: true,
     isHighlighted: true,
-    difficulty: "High Complexity",
   },
-
-  // ==========================================
-  // ADDITIONAL PROJECTS (Full Portfolio Archive)
-  // Accessible via pagination and category filters
-  // ==========================================
   {
     id: "pemutu",
     title: "PEMUTU",
@@ -121,11 +109,10 @@ export const PROJECTS_METADATA: ProjectType[] = [
     highlight: "Centralized higher education QA, internal audit workflows, and accreditation management.",
     tech: ["PHP", "CodeIgniter", "PostgreSQL", "Database Architecture"],
     category: "web",
-    categoryLabel: "Full-Stack Web",
+    categoryLabel: "Full-Stack Website",
     githubUrl: "https://github.com/Achmad96/pemutu",
     featured: false,
     isHighlighted: false,
-    difficulty: "Intermediate",
   },
   {
     id: "toddler-nutrition-analysis",
@@ -135,13 +122,12 @@ export const PROJECTS_METADATA: ProjectType[] = [
     highlight: "Supervised growth metric classification, WHO z-score modeling & interactive clinical risk analytics.",
     tech: ["Python", "Scikit-Learn", "Machine Learning", "Streamlit", "Pandas", "Statistical Modeling"],
     category: "ai",
-    categoryLabel: "Machine Learning & AI",
+    categoryLabel: "Artificial Intelligence",
     url: "https://toddler-nutrition-analysis.streamlit.app/",
     githubUrl: "https://github.com/Achmad96/toddler-nutrition-analysis",
     featured: false,
     isML: true,
     isHighlighted: false,
-    difficulty: "Intermediate",
   },
   {
     id: "umkm-desa-keduyung",
@@ -151,12 +137,11 @@ export const PROJECTS_METADATA: ProjectType[] = [
     highlight: "Full-stack marketplace empowering village entrepreneurs with online commerce.",
     tech: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     category: "web",
-    categoryLabel: "Full-Stack Web",
+    categoryLabel: "Full-Stack Website",
     url: "https://keduyung.vercel.app",
     githubUrl: "https://github.com/Achmad96/umkm-desa-keduyung",
     featured: false,
     isHighlighted: false,
-    difficulty: "Standard",
   },
   {
     id: "smart-sumbermalang",
@@ -171,7 +156,6 @@ export const PROJECTS_METADATA: ProjectType[] = [
     githubUrl: "https://github.com/Achmad96/smart",
     featured: false,
     isHighlighted: false,
-    difficulty: "Standard",
   },
   {
     id: "inventory-managements",
@@ -181,11 +165,10 @@ export const PROJECTS_METADATA: ProjectType[] = [
     highlight: "Production stock management dashboard with Express REST APIs and React.",
     tech: ["React", "Node.js", "Express", "Vite", "REST API"],
     category: "web",
-    categoryLabel: "Full-Stack Web",
+    categoryLabel: "Full-Stack Website",
     githubUrl: "https://github.com/Achmad96/inventory-managements",
     featured: false,
     isHighlighted: false,
-    difficulty: "Standard",
   },
   {
     id: "himaprosif-portal",
@@ -200,7 +183,6 @@ export const PROJECTS_METADATA: ProjectType[] = [
     githubUrl: "https://github.com/Achmad96/himaprosif",
     featured: false,
     isHighlighted: false,
-    difficulty: "Standard",
   },
   {
     id: "spotimad",
@@ -210,12 +192,11 @@ export const PROJECTS_METADATA: ProjectType[] = [
     highlight: "Audio streaming interface with responsive playback controls.",
     tech: ["TypeScript", "React", "Tailwind CSS", "Web Audio API"],
     category: "web",
-    categoryLabel: "Full-Stack Web",
+    categoryLabel: "Full-Stack Website",
     url: "https://spotimad.vercel.app",
     githubUrl: "https://github.com/Achmad96/Spotimad",
     featured: false,
     isHighlighted: false,
-    difficulty: "Standard",
   },
   {
     id: "remaja-masjid",
@@ -230,7 +211,6 @@ export const PROJECTS_METADATA: ProjectType[] = [
     githubUrl: "https://github.com/Achmad96/remaja-masjid-website",
     featured: false,
     isHighlighted: false,
-    difficulty: "Standard",
   },
   {
     id: "geotera",
@@ -240,12 +220,11 @@ export const PROJECTS_METADATA: ProjectType[] = [
     highlight: "Engineering consultancy web presence showcasing industrial surveying.",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     category: "web",
-    categoryLabel: "Full-Stack Web",
+    categoryLabel: "Full-Stack Website",
     url: "https://geotera.vercel.app",
     githubUrl: "https://github.com/Achmad96/geotera",
     featured: false,
     isHighlighted: false,
-    difficulty: "Standard",
   },
   {
     id: "madchat",
@@ -255,11 +234,10 @@ export const PROJECTS_METADATA: ProjectType[] = [
     highlight: "Real-time communication platform powered by WebSockets and TypeScript.",
     tech: ["TypeScript", "Node.js", "Socket.io", "React"],
     category: "web",
-    categoryLabel: "Full-Stack Web",
+    categoryLabel: "Full-Stack Website",
     githubUrl: "https://github.com/Achmad96/madchat",
     featured: false,
     isHighlighted: false,
-    difficulty: "Intermediate",
   },
   {
     id: "puskesmas",
@@ -273,6 +251,5 @@ export const PROJECTS_METADATA: ProjectType[] = [
     githubUrl: "https://github.com/Achmad96/puskesmas-new",
     featured: false,
     isHighlighted: false,
-    difficulty: "Intermediate",
   },
 ];
