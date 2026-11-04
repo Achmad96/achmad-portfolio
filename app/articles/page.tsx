@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArticleFormType } from "@/types";
 import { getPublishedArticles } from "@/lib/NotionService";
 
@@ -6,6 +7,36 @@ import PaginationComponent from "@/components/PaginationComponent";
 import { isValidUUID } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowLeft, BookOpen } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Articles & Research | Achmad Raihan",
+  description:
+    "Deep-dives, architecture breakdowns, machine learning experiments, and insights into building high-performance systems.",
+  openGraph: {
+    title: "Articles & Research | Achmad Raihan",
+    description:
+      "Deep-dives, architecture breakdowns, machine learning experiments, and insights into building high-performance systems.",
+    url: "https://achmad-portfolio.vercel.app/articles",
+    siteName: "Achmad Raihan Portfolio",
+    type: "website",
+    locale: "en_US",
+    images: [
+      {
+        url: "/profile.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Achmad Raihan Articles & Research",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Articles & Research | Achmad Raihan",
+    description:
+      "Deep-dives, architecture breakdowns, machine learning experiments, and insights into building high-performance systems.",
+    images: ["/profile.jpg"],
+  },
+};
 
 const PAGE_SIZE = 6;
 

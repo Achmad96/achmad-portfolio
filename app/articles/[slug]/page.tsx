@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import { ArticleType } from "@/types";
 
 import { getHeadings, getSingleArticlePage } from "@/lib/NotionService";
@@ -151,18 +152,112 @@ const ArticlePage = async ({
   );
 };
 
+const extractArticleDescription = (
+  markdownText?: string,
+  title?: string
+): string => {
+  if (!markdownText) {
+    return title
+      ? `Read ${title} by Achmad Raihan. Technical insights, machine learning architectures, and software engineering.`
+      : "Technical article and research by Achmad Raihan.";
+  }
+
+  const clean = markdownText
+    .replace(/!\[.*?\]\(.*?\)/g, "") // images
+    .replace(/\[([^\]]+)\]\(.*?\)/g, "$1") // link text
+    .replace(/#{1,6}\s+/g, "") // headers
+    .replace(/(\*\*|__)(.*?)\1/g, "$2") // bold
+    .replace(/(\*|_)(.*?)\1/g, "$2") // italic
+    .replace(/`{1,3}[\s\S]*?`{1,3}/g, "") // code blocks and inline code
+    .replace(/>\s+/g, "") // blockquotes
+    .replace(/[-*+]\s+/g, "") // bullet points
+    .replace(/\d+\.\s+/g, "") // numbered lists
+    .replace(/[\r\n]+/g, " ") // newlines
+    .replace(/\s+/g, " ") // multiple spaces
+    .trim();
+
+  if (clean.length > 160) {
+    return clean.slice(0, 157).trim() + "...";
+  }
+
+  return (
+    clean ||
+    (title
+      ? `Read ${title} by Achmad Raihan.`
+      : "Technical article and research by Achmad Raihan.")
+  );
+};
+
 export const generateMetadata = async ({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) => {
+}): Promise<Metadata> => {
   const { slug } = await params;
-  const { article }: { article: ArticleType } = (await getSingleArticlePage(
-    slug
-  )) as { article: ArticleType };
-  if (!article) notFound();
+  const data = await getSingleArticlePage(slug);
+  const article = data?.article as ArticleType | undefined;
+  const markdown = data?.markdown;
+
+  if (!article) return {};
+
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://achmad-portfolio.vercel.app";
+  const articleUrl = `${siteUrl}/articles/${slug}`;
+  const title = `${article.title} | Achmad Raihan`;
+  const description = extractArticleDescription(markdown?.parent, article.title);
+
+  const rawCover = article.cover || `${siteUrl}/profile.jpg`;
+  const coverUrl = rawCover.startsWith("http://")
+    ? rawCover.replace("http://", "https://")
+    : rawCover;
+
+  const imageMimeType = coverUrl.toLowerCase().includes(".png")
+    ? "image/png"
+    : coverUrl.toLowerCase().includes(".webp")
+    ? "image/webp"
+    : "image/jpeg";
+
   return {
-    title: `${article.title} | Achmad Raihan`,
+    title,
+    description,
+    authors: [{ name: article.author?.name || "Achmad Raihan" }],
+    keywords: [
+      article.title,
+      ...(article.tags?.map((tag) => tag.name) || []),
+      "Achmad Raihan",
+      "Machine Learning",
+      "Article",
+    ],
+    alternates: {
+      canonical: articleUrl,
+    },
+    openGraph: {
+      title,
+      description,
+      url: articleUrl,
+      siteName: "Achmad Raihan Portfolio",
+      locale: "en_US",
+      type: "article",
+      publishedTime: article.createdAt,
+      authors: [article.author?.name || "Achmad Raihan"],
+      tags: article.tags?.map((tag) => tag.name) || [],
+      images: [
+        {
+          url: coverUrl,
+          secureUrl: coverUrl,
+          width: 1200,
+          height: 630,
+          alt: article.title,
+          type: imageMimeType,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [coverUrl],
+    },
   };
 };
 
