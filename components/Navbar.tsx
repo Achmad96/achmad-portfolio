@@ -16,7 +16,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -69,7 +69,7 @@ export default function Navbar() {
           {/* Desktop Right Actions */}
           <div className="hidden items-center gap-3 md:flex">
             {/* Theme Toggle Button */}
-            {mounted && (
+            {mounted ? (
               <button
                 onClick={toggleTheme}
                 title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
@@ -78,12 +78,14 @@ export default function Navbar() {
               >
                 {theme === "dark" ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-neutral-700" />}
               </button>
+            ) : (
+              <div className="h-8 w-8 rounded-lg border border-transparent" aria-hidden="true" />
             )}
           </div>
 
           {/* Mobile Actions */}
           <div className="flex items-center gap-2 md:hidden">
-            {mounted && (
+            {mounted ? (
               <button
                 onClick={toggleTheme}
                 className="rounded-lg border border-neutral-200 bg-neutral-100 p-2 text-neutral-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300"
@@ -91,6 +93,8 @@ export default function Navbar() {
               >
                 {theme === "dark" ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-neutral-700" />}
               </button>
+            ) : (
+              <div className="h-8 w-8 rounded-lg border border-transparent" aria-hidden="true" />
             )}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

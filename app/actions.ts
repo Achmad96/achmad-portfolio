@@ -7,38 +7,40 @@ export type BlurImageDataType = {
     height: number;
     width: number;
   };
-  color: {
+  color?: {
     r: number;
     g: number;
     b: number;
     hex: string;
   };
-  css: {
-    backgroundImage: string;
-    backgroundPosition: string;
-    backgroundSize: string;
-    backgroundRepeat: string;
-  };
   base64: string;
-  pixels: {
-    a?: number | undefined;
-    r: number;
-    g: number;
-    b: number;
-  }[][];
   message: string;
 };
 
-export async function getBlurDataImage(src: string) {
-  if (!src) return { message: "Error, source not founded" };
-  const buffer = await fetch(src).then(async (res) => Buffer.from(await res.arrayBuffer()));
-  const {
-    metadata: { height, width },
-    ...plaiceholder
-  } = await getPlaiceholder(buffer, { size: 10 });
-  return {
-    message: "Success get the blur image",
-    ...plaiceholder,
-    img: { src, height, width },
-  };
+export async function getBlurDataImage(
+  src: string
+): Promise<BlurImageDataType | null> {
+  if (!src) return null;
+  try {
+    const res = await fetch(src);
+    if (!res.ok) {
+      return null;
+    }
+    const buffer = Buffer.from(await res.arrayBuffer());
+    const {
+      metadata: { height, width },
+      base64,
+      color,
+    } = await getPlaiceholder(buffer, { size: 10 });
+
+    return {
+      message: "Success",
+      base64,
+      color,
+      img: { src, height, width },
+    };
+  } catch (error) {
+    console.warn(`[getBlurDataImage] Failed to generate placeholder for image: ${src}`);
+    return null;
+  }
 }

@@ -1,12 +1,11 @@
 "use client";
 
 import { HeadingMapStruct } from "@/types";
-import { formatSlug } from "@/lib/utils";
+import { formatSlug, debounce } from "@/lib/utils";
 import { mergeHeadings } from "@/utils/MergeHeadings";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-scroll";
-import { debounce } from "lodash";
-import { AlignLeft, Share2, Check, Copy, User } from "lucide-react";
+import { AlignLeft, Share2, Check } from "lucide-react";
 import { toast } from "sonner";
 
 interface IArticleSide {
@@ -14,14 +13,14 @@ interface IArticleSide {
   headings: HeadingMapStruct[];
 }
 
-const ArticleSide = ({ title, headings }: IArticleSide) => {
-  const mergedHeadings = mergeHeadings(headings);
+const ArticleSide = ({ title: _title, headings }: IArticleSide) => {
+  const mergedHeadings = useMemo(() => mergeHeadings(headings), [headings]);
   const [elementOnRead, setElementOnRead] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
-  const handleScroll = useCallback(
-    debounce((event: any) => {
-      const scrollTop = event.target.documentElement.scrollTop;
+  useEffect(() => {
+    const handleScroll = debounce(() => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const headingElements = document.querySelectorAll('[id^="h-"]');
       headingElements.forEach((element) => {
         const elementTop = Math.round(
@@ -31,14 +30,14 @@ const ArticleSide = ({ title, headings }: IArticleSide) => {
           setElementOnRead(element.id);
         }
       });
-    }, 100),
-    []
-  );
+    }, 100);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      handleScroll.cancel();
+    };
+  }, []);
 
   const handleCopyLink = () => {
     if (typeof window !== "undefined") {

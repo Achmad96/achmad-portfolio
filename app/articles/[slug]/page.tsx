@@ -5,8 +5,8 @@ import { ArticleType } from "@/types";
 import { getHeadings, getSingleArticlePage } from "@/lib/NotionService";
 import { ImageWithBlur } from "@/components/ImageComponent";
 import { BlurImageDataType, getBlurDataImage } from "@/app/actions";
+import { formatSlug } from "@/lib/utils";
 
-import slugify from "slugify";
 import ArticleContent from "@/components/ArticleContent";
 import ArticleSide from "@/components/ArticleSide";
 import Link from "next/link";
@@ -27,15 +27,15 @@ const ArticlePage = async ({
     article.cover
   )) as BlurImageDataType;
   const headings = await getHeadings(article.id);
-  const headingMap = (headings || []).reduce((acc: any, heading: any) => {
-    if (heading?.text) {
-      acc[heading.text] = slugify("h-" + heading.text, {
-        lower: true,
-        strict: true,
-      });
-    }
-    return acc;
-  }, {});
+  const headingMap = (headings || []).reduce<Record<string, string>>(
+    (acc, heading: any) => {
+      if (heading?.text) {
+        acc[heading.text] = `h-${formatSlug(heading.text)}`;
+      }
+      return acc;
+    },
+    {}
+  );
 
   return (
     <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">

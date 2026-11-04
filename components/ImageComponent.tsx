@@ -19,11 +19,20 @@ interface ImageWithoutBlurInterface {
 
 const ImageWithoutBlur = (props: ImageWithoutBlurInterface) => {
   const { src, alt, sizes, className } = props;
-  return <Image src={src} alt={alt} priority={true} fill={true} sizes={sizes} className={className} />;
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      priority={true}
+      fill={true}
+      sizes={sizes}
+      className={className}
+    />
+  );
 };
 
 interface ImageWithBlurInterface {
-  blurImageData: BlurImageDataType;
+  blurImageData?: BlurImageDataType | null;
   alt: string;
   className?: string;
   style?: React.CSSProperties;
@@ -33,7 +42,18 @@ interface ImageWithBlurInterface {
 
 const ImageWithBlur = (props: ImageWithBlurInterface) => {
   const { alt, className, blurImageData, style, fill, sizes } = props;
+
+  if (!blurImageData?.img?.src) {
+    return (
+      <div
+        className={`bg-neutral-100 dark:bg-neutral-800 ${className || ""}`}
+        style={style}
+      />
+    );
+  }
+
   const { img, base64 } = blurImageData;
+
   return (
     <Image
       src={img.src}
@@ -41,8 +61,8 @@ const ImageWithBlur = (props: ImageWithBlurInterface) => {
       height={!fill ? img.height : undefined}
       alt={alt}
       loading="lazy"
-      placeholder="blur"
-      blurDataURL={base64}
+      placeholder={base64 ? "blur" : "empty"}
+      blurDataURL={base64 || undefined}
       className={className}
       fill={fill}
       sizes={fill ? sizes : undefined}

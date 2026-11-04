@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import LanguagesCard from "@/components/LanguagesCard";
 import LeetCodeCard from "@/components/LeetCodeCard";

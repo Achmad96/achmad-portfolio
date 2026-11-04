@@ -1,15 +1,15 @@
-type HeadingType = "heading_1" | "heading_2" | "heading_3";
+import type { HeadingMapStruct, HeadingType } from "@/types";
 
-type HeadingMapStruct = {
-  id: string;
-  text: string;
-  type: HeadingType;
-  sub?: HeadingMapStruct[];
+const HEADING_LEVEL: Record<HeadingType, number> = {
+  heading_1: 1,
+  heading_2: 2,
+  heading_3: 3,
 };
 
 const mergeHeadings = (headings: HeadingMapStruct[]): HeadingMapStruct[] => {
   const result: HeadingMapStruct[] = [];
   const stack: HeadingMapStruct[] = [];
+
   headings.forEach((heading) => {
     const newHeading: HeadingMapStruct = {
       id: heading.id,
@@ -18,7 +18,12 @@ const mergeHeadings = (headings: HeadingMapStruct[]): HeadingMapStruct[] => {
       sub: [],
     };
 
-    while (stack.length > 0 && stack[stack.length - 1].type >= newHeading.type) {
+    const newLevel = HEADING_LEVEL[newHeading.type] ?? 1;
+
+    while (
+      stack.length > 0 &&
+      (HEADING_LEVEL[stack[stack.length - 1].type] ?? 1) >= newLevel
+    ) {
       stack.pop();
     }
 
@@ -32,6 +37,8 @@ const mergeHeadings = (headings: HeadingMapStruct[]): HeadingMapStruct[] => {
 
     stack.push(newHeading);
   });
+
   return result;
 };
+
 export { mergeHeadings };
